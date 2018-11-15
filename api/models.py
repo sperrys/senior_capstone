@@ -8,8 +8,13 @@ class Device(models.Model):
 
 
 class TrainingSession(models.Model):
-    pass
 
+    start = models.DateTimeField(null=False)
+    end = models.DateTimeField(null=False)
+
+
+class TraineeTraining(models.Model):
+    pass
 
 class Trainee(models.Model):
     pass
