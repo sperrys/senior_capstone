@@ -124,4 +124,4 @@ dmypy.json
 /capstone
 
 # node
-/node_modules
+/capstone_frontend/node_modules
