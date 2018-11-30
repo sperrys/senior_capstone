@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import TrainingSession from './TrainingSession.js'
-import './App.css';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import TrainingSession from './TrainingSession.js';
+import Header from './Header.js';
+
+import Grid from 'react-bootstrap/lib/Grid';
 
 class TrainingSessionList extends Component {
   render() {
     return (
     	// an individual training session
       <div className="TrainingSessionList">
-			<TrainingSession></TrainingSession>
-      		<TrainingSession></TrainingSession>
-      		<TrainingSession></TrainingSession>
+        <Header />
+        <Grid >
+  			   <TrainingSession/>
+           <TrainingSession/>
+        </Grid>
       </div>
     );
   }

@@ -21,6 +21,15 @@ code {
 	margin-left: 35% !important;
 }
 
+.TrainingSession-arrow .TrainingSession-edit {
+	max-height: 20px;
+}
+
+.TrainingSession {
+	border-color: #cccccc;
+	padding-bottom: 5px;
+}
+
 .navbar-default {
 	background-color: #000000 !important; 
 }
