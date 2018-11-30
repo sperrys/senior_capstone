@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header.js';
 import './App.css';
 
 class Trainee extends Component {
@@ -17,12 +18,3 @@ class Trainee extends Component {
 export default Trainee;
 
 
-class TraineeData extends Component {
-	render() {
-		return (
-			<div className="TraineeData">
-				<header>Member 1</header>
-			</div>
-			);
-	}
-}

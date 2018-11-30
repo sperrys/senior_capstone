@@ -12,3 +12,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.Header-arrow {
+	max-height: 15px;
+}
+
+.Header-trainee {
+	margin-left: 35% !important;
+}
+
+.navbar-default {
+	background-color: #000000 !important; 
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #cccccc !important;
+}
+
+.panel-group {
+	margin-left: 10%;
+	margin-right: 10%; 
+}
