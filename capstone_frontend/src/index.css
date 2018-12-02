@@ -19,6 +19,8 @@ code {
 
 .Header-trainee {
 	margin-left: 35% !important;
+	font-size: 125%;
+	font-weight: bold;
 }
 
 .TrainingSession-arrow .TrainingSession-edit {
@@ -28,6 +30,15 @@ code {
 .TrainingSession {
 	border-color: #cccccc;
 	padding-bottom: 5px;
+}
+
+.TraineeData-headings {
+	font-weight: bold;
+}
+
+.TraineeData-avg{
+	font-size: 125%;
+	font-weight: bold;
 }
 
 .navbar-default {

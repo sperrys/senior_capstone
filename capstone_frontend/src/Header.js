@@ -26,7 +26,7 @@ class Header extends Component {
         </Nav>
         <Nav className="Header-trainee">
           <NavItem>
-          Member 0
+          Member {this.props.memberNum}
           </NavItem>
         </Nav>
       </Navbar>
