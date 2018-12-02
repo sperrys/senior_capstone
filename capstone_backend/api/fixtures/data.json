@@ -1,1 +1,11 @@
-{}
+[
+{
+  "model": "api.trainee",
+  "pk": 1,
+  "fields": {
+    "first_name": "Spencer",
+    "last_name": "Perry",
+    "age": 0
+  }
+}
+]
