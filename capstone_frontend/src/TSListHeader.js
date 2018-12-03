@@ -5,28 +5,16 @@ import './index.css';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
-import Image from 'react-bootstrap/lib/Image';
 
-
-import arrow from "./images/back-arrow.png";
-
-class Header extends Component {
+class TSListHeader extends Component {
   render() {
     return (
       // header for the top of each page - maybe many classes
       // with custom headers for each page?
       <Navbar>
-        <Nav pullLeft>
-          <NavItem eventKey={1} href="#">
-          <Image className="Header-arrow" src={arrow}/>
-          </NavItem>
-          <NavItem eventKey={1} href="#">
-          Back
-          </NavItem>
-        </Nav>
-        <Nav className="Header-trainee">
+        <Nav className="Header-sessions">
           <NavItem>
-          Member {this.props.memberNum}
+          Recent Training Sessions
           </NavItem>
         </Nav>
       </Navbar>
@@ -34,4 +22,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default TSListHeader;

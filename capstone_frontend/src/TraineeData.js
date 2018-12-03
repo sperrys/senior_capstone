@@ -5,7 +5,7 @@ import './index.css'
 import Panel from 'react-bootstrap/lib/Panel';
 import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 
-import Header from './Header.js';
+import TraineeDataHeader from './TraineeDataHeader.js';
 
 
 class Load extends Component {
@@ -65,7 +65,6 @@ class TraineeData extends Component {
 	    };
   	}
 
-
 	render() {
 		var loadAvg = 0;
   		var paceAvg = 1;
@@ -74,7 +73,7 @@ class TraineeData extends Component {
 
 		return (
 			<div className="TraineeData">
-				<Header memberNum={this.state.memberNum}/>
+				<TraineeDataHeader memberNum={this.state.memberNum}/>
 				<PanelGroup>
 					<Load avg={loadAvg}/>
 					<Pace avg={paceAvg}/>

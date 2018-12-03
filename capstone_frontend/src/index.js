@@ -4,10 +4,12 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 //import TrainingSessionList from './TrainingSessionList.js';
 import TraineeData from './TraineeData.js';
+//import TraineeList from './TraineeList.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<TraineeData />, document.getElementById('root'));
 //ReactDOM.render(<TrainingSessionList />, document.getElementById('root'));
+//ReactDOM.render(<TraineeList />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
