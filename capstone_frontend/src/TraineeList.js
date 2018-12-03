@@ -3,7 +3,9 @@ import Trainee from './Trainee.js'
 import './App.css';
 
 import PanelGroup from 'react-bootstrap/lib/PanelGroup';
+import Panel from 'react-bootstrap/lib/Panel';
 import TraineeListHeader from './TraineeListHeader.js';
+
 
 class TraineeList extends Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class TraineeList extends Component {
       <div className="TrainineeList">
         <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist}/>
   			<PanelGroup id="TrainineeListPanel">
+          <Notes notes={this.state.data.notes}/>
           {panelItems}
         </PanelGroup>
       </div>
@@ -41,3 +44,17 @@ class TraineeList extends Component {
 }
 
 export default TraineeList;
+
+
+
+class Notes extends Component {
+  render () {
+    return (
+      <Panel className="Notes-panel">
+        <Panel.Heading className="Notes-heading">Notes</Panel.Heading>
+        <Panel.Body className="Notes-body">{this.props.notes}</Panel.Body>
+      </Panel>
+      )
+  }
+}
+

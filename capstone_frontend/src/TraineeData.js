@@ -74,7 +74,7 @@ class TraineeData extends Component {
 		return (
 			<div className="TraineeData">
 				<TraineeDataHeader memberNum={this.state.memberNum}/>
-				<PanelGroup>
+				<PanelGroup id="TraineeDataPanel">
 					<Load avg={loadAvg}/>
 					<Pace avg={paceAvg}/>
 					<Cadence avg={cadenceAvg}/>
