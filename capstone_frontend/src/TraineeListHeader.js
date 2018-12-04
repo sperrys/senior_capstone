@@ -18,10 +18,10 @@ class TraineeListHeader extends Component {
       // TODO: fix nested a tags, also better pass info for state
       <Navbar>
         <Nav pullLeft>
-          <NavItem eventKey={1} href="#">
+          <NavItem eventKey={1}>
           <Link to="/"><Image className="Header-arrow" src={arrow}/></Link>
           </NavItem>
-          <NavItem eventKey={1} href="#">
+          <NavItem eventKey={1}>
           Back
           </NavItem>
         </Nav>

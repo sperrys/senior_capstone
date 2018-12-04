@@ -22,7 +22,7 @@ class TrainingSessionList extends Component {
   render() {
     var parent = this;
     const panelItems = this.state.data.map(function(elem) {
-              return <TrainingSession changeComp={parent.props.changeComp} dist={elem.dist} numMembers={elem.numTrainees} date={elem.date} />
+              return <TrainingSession sessionId={elem.id} changeComp={parent.props.changeComp} dist={elem.dist} numMembers={elem.numTrainees} date={elem.date} />
             });
 
 

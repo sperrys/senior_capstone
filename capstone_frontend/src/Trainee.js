@@ -12,16 +12,18 @@ import { Link } from 'react-router-dom';
 
 class Trainee extends Component {
   render() {
+    var path = '/trainee/'+this.props.sessionId+'/'+this.props.id;
+
     return (
     // an individual trainee for the list of trainees by session
       <Panel className="Trainee">
         <Panel.Body>
           <Row>
-            <Col xs={6} md={4}><span className="Trainee-name">Member {this.props.idNum}</span></Col>
+            <Col xs={6} md={4}><span className="Trainee-name">Member {this.props.id}</span></Col>
             <Col xs={6} md={8}><span className="Trainee-info">
               Total Load Averaging 
               <span className="Trainee-load">{this.props.avgLoad} lbs</span>
-              <Link to="/trainee"><Image className="Trainee-arrow" src={arrow}/></Link>
+              <Link to={path}><Image className="Trainee-arrow" src={arrow}/></Link>
               </span></Col>
           </Row>
         </Panel.Body>

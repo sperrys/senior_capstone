@@ -13,21 +13,23 @@ import { Link } from 'react-router-dom';
 
 class TraineeDataHeader extends Component {
   render() {
+    var path = /session/ + this.props.sessionId;
+
     return (
       // header for the top of TraineeData
       // TODO: fix nested a tags, also better pass info for state
       <Navbar>
         <Nav pullLeft>
-          <NavItem eventKey={1} href="#">
-          <Link to="/session/"><Image className="Header-arrow" src={arrow}/></Link>
+          <NavItem eventKey={1}>
+          <Link to={path}><Image className="Header-arrow" src={arrow}/></Link>
           </NavItem>
-          <NavItem eventKey={1} href="#">
+          <NavItem eventKey={1}>
           Back
           </NavItem>
         </Nav>
         <Nav className="Header-trainee">
           <NavItem>
-          Member {this.props.memberNum}
+          Member {this.props.id}
           </NavItem>
         </Nav>
       </Navbar>

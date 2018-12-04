@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 class TrainingSession extends Component {
 
   render() {
-  	var nextComp = "trainee";
+  	var path = "/session/" + this.props.sessionId;
 
     return (
 	    <Panel className="TrainingSession">
@@ -26,7 +26,7 @@ class TrainingSession extends Component {
 		        <Col xs={6} md={4}>
 			        <span className="TrainingSession-members">
 			        	{this.props.numMembers} Members 
-			        	<Link to='/session'><Image className="TrainingSession-arrow" src={arrow}/></Link>
+			        	<Link to={path}><Image className="TrainingSession-arrow" src={arrow}/></Link>
 			        </span>
 		        </Col>
 		      </Row>

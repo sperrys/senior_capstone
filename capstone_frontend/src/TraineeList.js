@@ -14,7 +14,7 @@ class TraineeList extends Component {
       error: null,
       isLoaded: false,
       data: {
-          id: 1,
+          id: props.match.params.id,
           dist: 1.1,
           date: "December 1, 2018",
           notes: "These are my notes",
@@ -26,14 +26,16 @@ class TraineeList extends Component {
   }
 
   render() {
+    var sessionId = this.props.match.params.id;
+
     const panelItems = this.state.data.trainees.map(function(elem) {
-          return <Trainee idNum={elem.id} avgLoad={elem.avgLoad} />
+          return <Trainee id={elem.id} avgLoad={elem.avgLoad} sessionId={sessionId}/>
         });
 
     return (
     	// an individual training session
       <div className="TrainineeList">
-        <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist}/>
+        <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist} sessionId={sessionId}/>
   			<PanelGroup id="TrainineeListPanel">
           <Notes notes={this.state.data.notes}/>
           {panelItems}

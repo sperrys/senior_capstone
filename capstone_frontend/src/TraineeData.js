@@ -61,7 +61,8 @@ class TraineeData extends Component {
 	      error: null,
 	      isLoaded: false,
 	      data: [],
-	      memberNum: 4
+	      id: props.match.params.id,
+	      sessionId: props.match.params.sessionId
 	    };
   	}
 
@@ -73,7 +74,7 @@ class TraineeData extends Component {
 
 		return (
 			<div className="TraineeData">
-				<TraineeDataHeader memberNum={this.state.memberNum}/>
+				<TraineeDataHeader sessionId={this.state.sessionId} id={this.state.id}/>
 				<PanelGroup id="TraineeDataPanel">
 					<Load avg={loadAvg}/>
 					<Pace avg={paceAvg}/>
