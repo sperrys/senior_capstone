@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.Header-arrow {
+	max-height: 15px;
+}
+
+.Header-trainee {
+	margin-left: 35% !important;
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.Header-sessions {
+	margin-left: 40% !important;
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.Header-dist {
+	margin-left: 25% !important;
+	font-size: 120%;
+	font-weight: bold;
+}
+
+.Header-date {
+	margin-left: 10% !important;
+	font-size: 120%;
+}
+
+.TrainingSession-arrow {
+	max-height: 20px;
+	padding-left: 10%;
+}
+
+.TrainingSession-members {
+	padding-left: 40%;
+}
+
+.TrainingSession-edit {
+	max-height: 20px;
+	padding-left: 40%;
+}
+
+.TrainingSession-dist {
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.TraineeData-headings {
+	font-weight: bold;
+}
+
+.TraineeData-avg{
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.Notes-heading {
+	background-color: #cccccc !important;
+	padding-left: 47% !important;
+	font-weight: bold;
+}
+
+.Notes-body {
+	background-color: #cccccc;
+}
+
+.Trainee-name {
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.Trainee-load {
+	font-size: 120%;
+	font-weight: bold;
+	padding-left: 2%;
+}
+
+.Trainee-arrow {
+	max-height: 20px;
+	padding-left: 10%;
+}
+
+.Trainee-info {
+	padding-left: 50%;
+}
+
+.navbar-default {
+	background-color: #000000 !important; 
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #cccccc !important;
+}
+
+.panel-group {
+	margin-left: 10%;
+	margin-right: 10%; 
+}

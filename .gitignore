@@ -120,5 +120,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#virtualenv
-/capstone_env
+# virtual env
+/capstone
+
+# node
+/capstone_frontend/node_modules
