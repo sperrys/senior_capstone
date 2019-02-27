@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 
 class TraineeDataHeader extends Component {
   render() {
-    var path = /session/ + this.props.sessionId;
 
     return (
       // header for the top of TraineeData
@@ -21,7 +20,7 @@ class TraineeDataHeader extends Component {
       <Navbar>
         <Nav pullLeft>
           <NavItem eventKey={1}>
-          <Link to={path}><Image className="Header-arrow" src={arrow}/></Link>
+          <Link to='/'><Image className="Header-arrow" src={arrow}/></Link>
           </NavItem>
           <NavItem eventKey={1}>
           Back

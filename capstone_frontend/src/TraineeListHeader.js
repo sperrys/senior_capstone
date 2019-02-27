@@ -17,22 +17,9 @@ class TraineeListHeader extends Component {
       // header for the top of TraineeList
       // TODO: fix nested a tags, also better pass info for state
       <Navbar>
-        <Nav pullLeft>
-          <NavItem eventKey={1}>
-          <Link to="/"><Image className="Header-arrow" src={arrow}/></Link>
-          </NavItem>
-          <NavItem eventKey={1}>
-          Back
-          </NavItem>
-        </Nav>
-        <Nav className="Header-dist">
+        <Nav className="Header-title">
           <NavItem>
-          {this.props.dist} km
-          </NavItem>
-        </Nav>
-        <Nav className="Header-date">
-          <NavItem>
-          {this.props.date}
+          All Soldiers
           </NavItem>
         </Nav>
       </Navbar>

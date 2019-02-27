@@ -14,7 +14,6 @@ class TraineeList extends Component {
       error: null,
       isLoaded: false,
       data: {
-          id: props.match.params.id,
           dist: 1.1,
           date: "December 1, 2018",
           notes: "These are my notes",

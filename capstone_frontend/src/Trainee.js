@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 class Trainee extends Component {
   render() {
-    var path = '/trainee/'+this.props.sessionId+'/'+this.props.id;
+    var path = '/'+this.props.id;
 
     return (
     // an individual trainee for the list of trainees by session
