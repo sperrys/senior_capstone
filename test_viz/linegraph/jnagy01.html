@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script lang="javascript" src="js/jquery-3.1.0.min.js"></script>
+	<script lang="javascript" src="js/d3.min.js"></script>
+	<style>
+		html, body {
+			padding: 0;
+			margin: 0;
+		}
+		.line {
+  			fill: none;
+  			stroke: black;
+  			stroke-width: 2px;
+		}
+	</style>
+</head>
+<body>
+	<div id="legend1"></div>
+	<script>
+		var dimension = 500;
+
+		// set the dimensions and margins of the graph
+		var margin = {top: 20, right: 20, bottom: 30, left: 50},
+		    width = dimension - margin.left - margin.right,
+		    height = dimension - margin.top - margin.bottom;
+
+		// appends a 'group' element to 'svg'
+		// moves the 'group' element to the top left margin
+		var svg = d3.select("body").append("svg")
+		    .attr("width", width + margin.left + margin.right)
+		    .attr("height", height + margin.top + margin.bottom)
+		  .append("g")
+		    .attr("transform",
+		          "translate(" + margin.left + "," + margin.top + ")");
+
+		// line has no visible axes!!
+
+		// draw solid
+		// draw dashed line
+		//style("stroke-dasharray", ("3, 3"))
+
+		// parse the date / time
+		var parseTime = d3.timeParse("%Y");
+
+		// set the ranges
+		var x = d3.scaleTime().range([0, width]);
+		var y = d3.scaleLinear().range([height, 0]);
+
+		// define the line
+		var valueline_solid = d3.line()
+		    .x(function(d) { return x(d.Date); })
+		    .y(function(d) { return y(d.Imports); });
+		// define the line
+		var valueline_dashed = d3.line()
+		    .x(function(d) { return x(d.Date); })
+		    .y(function(d) { return y(d.Exports); });
+		 
+
+		function draw(data, country) {
+		  
+			var data = data[country];
+
+			// format the data
+			data.forEach(function(d) {
+			  d.Date = parseTime(d.Date);
+			  d.Imports = +d.Imports;
+			  d.Exports = +d.Exports;
+			});
+
+			// sort years ascending
+			data.sort(function(a, b){
+			return a["Date"]-b["Date"];
+			})
+
+			// Scale the range of the data
+			x.domain(d3.extent(data, function(d) { return d.Date; }));
+			y.domain([0, d3.max(data, function(d) {
+			  return Math.max(d.Imports, d.Exports); })]);
+
+			// Add the valueline path.
+			svg.append("path")
+			  .data([data])
+			  .attr("class", "line")
+			  .attr("d", valueline_solid);
+			// Add the valueline path.
+			svg.append("path")
+			  .data([data])
+			  .attr("class", "line")
+			  .style("stroke-dasharray", ("3, 3"))
+			  .attr("d", valueline_dashed);  
+		}
+
+			// Get the data
+			d3.json("data.json", function(error, data) {
+			if (error) throw error;
+
+			// trigger render
+			draw(data, "test");
+			});
+
+	</script>
+</body>
+</html>

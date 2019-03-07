@@ -25,17 +25,16 @@ class TraineeList extends Component {
   }
 
   render() {
-    var sessionId = this.props.match.params.id;
 
     const panelItems = this.state.data.trainees.map(function(elem) {
-          return <Trainee id={elem.id} avgLoad={elem.avgLoad} sessionId={sessionId}/>
+          return <Trainee id={elem.id} avgLoad={elem.avgLoad}/>
         });
 
     return (
     	// an individual training session
-      <div className="TrainineeList">
-        <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist} sessionId={sessionId}/>
-  			<PanelGroup id="TrainineeListPanel">
+      <div className="TraineeList">
+        <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist}/>
+  			<PanelGroup id="TraineeListPanel">
           <Notes notes={this.state.data.notes}/>
           {panelItems}
         </PanelGroup>
