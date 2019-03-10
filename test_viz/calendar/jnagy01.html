@@ -88,17 +88,26 @@
         .domain([-.05, .05])
         .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
+    var parseTime = d3.timeParse("%Y-%m-%d");
+
+    console.log("RANGE")
+    console.log(d3.range([parseTime("2019-01-01"), parseTime("2019-03-01")]));
+
     var svg = d3.select("#chart").selectAll("svg")
         .data(d3.range(2019, 2020))
-      .enter().append("svg")
+        .enter()
+        .append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "RdYlGn")
-      .append("g")
+        .append("g")
 
+
+    // ! timeDays to control date range!!
+    // TODO: make dynamic
     var rect = svg.selectAll(".day")
         .data(function(d) { 
-          return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+          return d3.timeDays(new Date(d, 0, 1), new Date(d, 1, 1));
         })
       .enter().append("rect")
         .attr("class", "day")
@@ -115,9 +124,11 @@
         })
         .datum(format);
 
+    // ! timeMonths to control date range!!
+    // TODO: make dynamic
     var month_titles = svg.selectAll(".month-title")  // Jan, Feb, Mar and the whatnot
           .data(function(d) { 
-            return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+            return d3.timeMonths(new Date(d, 0, 1), new Date(d, 1, 1)); })
         .enter().append("text")
           .text(monthTitle)
           .attr("x", function(d, i) {
@@ -155,24 +166,15 @@
 
     d3.json("data.json", function(error, d) {
 
-    	// GETTING ARRAY OF KEY:, VALUE:
     	var data = {};
-    	console.log(d);
+
+      // ! Need data for calendar to be accessable by data['date-string']
     	d.map(function (n) { data[n.date] = n.avg });
-    	// var data = d3.nest()
-     //    .key(function(d) { console.log(d.date); return d.date; })
-     //    .rollup(function(d) { return d[0].avg; })
-     //    .entries(d);
 
       rect.filter(function(d) { return d in data; })
-          .attr("class", function(d) { console.log("here"); console.log(data[d]); return "day " + color(data[d]); })
+          .attr("class", function(d) { return "day " + color(data[d]); })
         .select("title")
           .text(function(d) { console.log(d); return d + ": " + percent(data[d]); });
-
-       console.log("DATA")
-       console.log(data)
-       testdata = data;
-       console.log(data["2019-01-02"]);
 
       //  Tooltip
       rect.on("mouseover", mouseover);
