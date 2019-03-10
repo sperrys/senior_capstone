@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/lib/Col';
 
 import TraineeDataHeader from './TraineeDataHeader.js';
 import CalendarViz from './CalendarViz.js';
+import FootLoadViz from './FootLoadViz.js';
 
 
 class Summary extends Component {
@@ -48,7 +49,8 @@ class FootLoad extends Component {
 			<Panel>
 				<Panel.Heading className='TraineeData-headings'>Foot Load</Panel.Heading>
 				<Panel.Body>
-					<div id={"foot-"+this.props.id}></div>
+					<div id={"footlegend-"+this.props.id}></div>
+					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id}/></div>
 				</Panel.Body>
 			</Panel>
 		);

@@ -9,8 +9,6 @@ class CalendarViz extends Component {
 
 
 	drawChart() {
-		var dimension = 200;
-		// TODO: move to use getClientBoundingRect
 		var chart_bounds = d3
 		  .select("#cal")
 		  .node()
@@ -19,19 +17,11 @@ class CalendarViz extends Component {
 		console.log("chart bounds");
 		console.log(chart_bounds);
 
-		var cellSize = chart_bounds.width / 15, // cell size
-		  //cellHeight = cellWidth > 55 ? cellWidth : 55;
+		var cellSize = chart_bounds.width / 13, // cell size
 		  height = cellSize * 10,
 		  width = cellSize * 10;
 
-		console.log(cellSize);
-
-
-		var theme_color = "#0b53c6";
-
-	    // var width = dimension,
-	    //     height = dimension,
-	    //     cellSize = 25; // cell size
+		// var theme_color = "#0b53c6";
 
 	    var no_months_in_a_row = Math.floor(width / (cellSize * 7 + 50));
 	    var shift_up = cellSize * 4;

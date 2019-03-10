@@ -100,7 +100,7 @@ code {
 	margin-right: 10%; 
 }
 
-/* for calendar viz */
+/* BELOW FOR CAL VIZ */
 /*      #cal{
         width: 800px;
         margin: 0 auto;
@@ -151,3 +151,19 @@ code {
     border: 2px solid #ccc;
     padding: 10px;
   }
+
+  /* BELOW FOR FOOT VIZ*/
+.axis text {
+		font: 10px sans-serif;
+}
+
+.axis line, .axis path {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+#footlegend-day, #footlegend-avg {
+	padding-left: 10%;
+}
+		
