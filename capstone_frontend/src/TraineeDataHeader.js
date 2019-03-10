@@ -28,7 +28,7 @@ class TraineeDataHeader extends Component {
         </Nav>
         <Nav className="Header-trainee">
           <NavItem>
-          Member {this.props.id}
+          Soldier {this.props.id}
           </NavItem>
         </Nav>
       </Navbar>

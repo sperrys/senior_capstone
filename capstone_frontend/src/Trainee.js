@@ -22,7 +22,7 @@ class Trainee extends Component {
       <Panel className="Trainee">
         <Panel.Body>
           <Row>
-            <Col xs={6} md={4}><span className="Trainee-name">Member {this.props.id}</span></Col>
+            <Col xs={6} md={4}><span className="Trainee-name">Soldier {this.props.id}</span></Col>
             <Col xs={6} md={8}><span className="Trainee-info">
               Total Load Averaging 
               <span id={elemid} className="Trainee-load"><BarChart elemid={elemid}/></span>

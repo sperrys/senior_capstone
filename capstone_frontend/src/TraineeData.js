@@ -4,49 +4,63 @@ import './index.css'
 
 import Panel from 'react-bootstrap/lib/Panel';
 import PanelGroup from 'react-bootstrap/lib/PanelGroup';
+import Col from 'react-bootstrap/lib/Col';
 
 import TraineeDataHeader from './TraineeDataHeader.js';
+import CalendarViz from './CalendarViz.js';
 
 
-class Load extends Component {
+class Summary extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Load</Panel.Heading>
-				<Panel.Body><span className='TraineeData-avg'>{this.props.avg}</span> lbs. <br/>avg. load</Panel.Body>
+				<Panel.Heading className='TraineeData-headings'>Summary Details</Panel.Heading>
+				<Panel.Body>
+					<div id="summary-description"></div>
+				</Panel.Body>
 			</Panel>
 		);
 	}
 }
 
 
-class Pace extends Component {
+class Calendar extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Pace</Panel.Heading>
-				<Panel.Body><span className='TraineeData-avg'>{this.props.avg}</span> / km<br/> avg. pace</Panel.Body>
+				<Panel.Heading className='TraineeData-headings'>Choose a Date</Panel.Heading>
+				<Panel.Body>
+					<div id='cal-desciption'> 
+						Select a date to view the foot pressure and gait analysis during a 
+						specific training day. Each calendar day's color corresponds with the wellbeing 
+						index at that point in time.
+					</div>
+					<div id='cal'><CalendarViz elemid={'cal'}/></div>
+				</Panel.Body>
 			</Panel>
 		);
 	}
 }
 
-class Cadence extends Component {
+class FootLoad extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Cadence</Panel.Heading>
-				<Panel.Body><span className='TraineeData-avg'>{this.props.avg}</span> steps / minute<br/>avg. cadence </Panel.Body>
+				<Panel.Heading className='TraineeData-headings'>Foot Load</Panel.Heading>
+				<Panel.Body>
+					<div id={"foot-"+this.props.id}></div>
+				</Panel.Body>
 			</Panel>
 		);
 	}
 }
 
 class GaitAsym extends Component {
+	// TODO: pass in identifier for avg v day for id for D3
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Gait Asymmetry</Panel.Heading>
+				<Panel.Heading className='TraineeData-headings'>Gait Analysis</Panel.Heading>
 				<Panel.Body><span className='TraineeData-avg'>{this.props.avg}</span><br/>avg. asymetry</Panel.Body>
 			</Panel>
 		);
@@ -66,19 +80,25 @@ class TraineeData extends Component {
   	}
 
 	render() {
-		var loadAvg = 0;
-  		var paceAvg = 1;
-  		var cadenceAvg = 2;
-  		var gailAsymAvg = 3;
+		var avg = "avg";
+		var day = "day";
+
+		// TODO: can also pass in data for viz here if just get one data dump
 
 		return (
 			<div className='TraineeData'>
 				<TraineeDataHeader id={this.state.id}/>
 				<PanelGroup id='TraineeDataPanel'>
-					<Load avg={loadAvg}/>
-					<Pace avg={paceAvg}/>
-					<Cadence avg={cadenceAvg}/>
-					<GaitAsym avg={gailAsymAvg}/>
+				<Col xs={6} md={6}>
+					<Summary/>
+					<FootLoad id={avg}/>
+					<GaitAsym id={avg}/>
+				</Col>
+				<Col xs={6} md={6}>
+					<Calendar/>
+					<FootLoad id={day}/>
+					<GaitAsym id={day}/>
+				</Col>
 				</PanelGroup>
 			</div>
 		);
