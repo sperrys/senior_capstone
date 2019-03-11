@@ -10,9 +10,13 @@ import TraineeDataHeader from './TraineeDataHeader.js';
 import CalendarViz from './CalendarViz.js';
 import FootLoadViz from './FootLoadViz.js';
 import WBKeyViz from './WBKeyViz.js';
+import LineGraphViz from './LineGraphViz.js';
+import BarChartViz from './BarChartViz.js';
 
 
 class Summary extends Component {
+	// TODO: add box on wellbeing scale
+	// TODO: Use different line graph with axes
 	render() {
 		return (
 			<Panel>
@@ -24,7 +28,7 @@ class Summary extends Component {
 						gait cadence, stride length, and stride time.<br/><br/>Note: The wellbeing index is
 						not a diagnoses. 
 					</div>
-					<div id="summ-trends">Trends</div>
+					<div id="summ-trends">Trends <LineGraphViz elemid={"summ-trends"}/> </div>
 					<div id="summ-trends-descr">
 						These trends illustrate how their gait is varying in context with the load being
 						carried. The Gait Asymmetry percentage is based off of gait cadence, stride
@@ -71,12 +75,14 @@ class FootLoad extends Component {
 }
 
 class GaitAsym extends Component {
-	// TODO: pass in identifier for avg v day for id for D3
 	render() {
 		return (
 			<Panel>
 				<Panel.Heading className='TraineeData-headings'>Gait Analysis</Panel.Heading>
-				<Panel.Body><span className='TraineeData-avg'>{this.props.avg}</span><br/>avg. asymetry</Panel.Body>
+				<Panel.Body>
+					<div id={"gait-length-"+this.props.id}><BarChartViz elemid={"gait-length-"+this.props.id}/></div>
+					<div id={"gait-time-"+this.props.id}><BarChartViz elemid={"gait-time-"+this.props.id}/></div>
+				</Panel.Body>
 			</Panel>
 		);
 	}

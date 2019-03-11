@@ -152,7 +152,7 @@ code {
     padding: 10px;
   }
 
-  /* BELOW FOR FOOT VIZ*/
+/* BELOW FOR FOOT VIZ */
 .axis text {
 		font: 10px sans-serif;
 }
@@ -170,5 +170,19 @@ code {
 
 #foot-day, #foot-avg {
 	padding-left: 22%;
+}
+
+
+/* BELOW FOR LINE GRAPH VIZ */
+.line {
+	fill: none;
+	stroke: black;
+	stroke-width: 2px;
+}
+
+/* BELOW FOR BAR CHART VIZ */
+.barText {
+	margin-left: 10%;
+
 }
 		

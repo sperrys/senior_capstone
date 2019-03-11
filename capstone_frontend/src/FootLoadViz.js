@@ -27,8 +27,6 @@ class FootLoadViz extends Component {
 		var num_circles = coords.length;
 		var circles = [];
 
-		console.log("dimension: "+dimension);
-
 		var svg = d3.select("#foot-"+elemid).append('svg')
 			.attr('width', dimension)
 			.attr('height', dimension)
