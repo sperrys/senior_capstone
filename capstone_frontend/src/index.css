@@ -164,6 +164,11 @@ code {
 }
 
 #footlegend-day, #footlegend-avg {
-	padding-left: 10%;
+	padding-bottom: 5%;
+	padding-left: 19%;
+}
+
+#foot-day, #foot-avg {
+	padding-left: 22%;
 }
 		

@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/lib/Col';
 import TraineeDataHeader from './TraineeDataHeader.js';
 import CalendarViz from './CalendarViz.js';
 import FootLoadViz from './FootLoadViz.js';
+import WBKeyViz from './WBKeyViz.js';
 
 
 class Summary extends Component {
@@ -17,7 +18,19 @@ class Summary extends Component {
 			<Panel>
 				<Panel.Heading className='TraineeData-headings'>Summary Details</Panel.Heading>
 				<Panel.Body>
-					<div id="summary-description"></div>
+					<div id="summ-wellbeing">Wellbeing Index <WBKeyViz elemid={"summ-wellbeing"}/></div>
+					<div id="summ-wb-descr">
+						The Wellbeing Index is based off of data collected on changes in foot pressure,
+						gait cadence, stride length, and stride time.<br/><br/>Note: The wellbeing index is
+						not a diagnoses. 
+					</div>
+					<div id="summ-trends">Trends</div>
+					<div id="summ-trends-descr">
+						These trends illustrate how their gait is varying in context with the load being
+						carried. The Gait Asymmetry percentage is based off of gait cadence, stride
+						length, and stride time. The Load Carried weight includes the soldier&apos;s weight
+						and gear carried.
+					</div>
 				</Panel.Body>
 			</Panel>
 		);

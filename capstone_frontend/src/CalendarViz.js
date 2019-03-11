@@ -14,9 +14,6 @@ class CalendarViz extends Component {
 		  .node()
 		  .getBoundingClientRect();
 
-		console.log("chart bounds");
-		console.log(chart_bounds);
-
 		var cellSize = chart_bounds.width / 13, // cell size
 		  height = cellSize * 10,
 		  width = cellSize * 10;
@@ -63,7 +60,6 @@ class CalendarViz extends Component {
 	          .attr("width", cellSize)
 	          .attr("height", cellSize)
 	          .attr("x", function(d) {
-	          	console.log(d);
 	            var month_padding = 1.2 * cellSize*7 * ((month(d)-1) % (no_months_in_a_row));
 	            return day(d) * cellSize + month_padding + shift_right; 
 	          })
