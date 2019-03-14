@@ -8,6 +8,7 @@ class FootLoadViz extends Component {
   }
 
 	drawChart(elemid) {
+		console.log("FOOT DRAW")
 		var chart_bounds = d3
 		  .select("#foot-"+elemid)
 		  .node()

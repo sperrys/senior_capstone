@@ -105,6 +105,8 @@ class TraineeData extends Component {
 		var day = "day";
 
 		// TODO: can also pass in data for viz here if just get one data dump
+		// TODO: initial load of right panel use first date and use id data from
+	    //       calendar to pass data through
 
 		return (
 			<div className='TraineeData'>

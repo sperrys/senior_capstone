@@ -101,10 +101,7 @@ code {
 }
 
 /* BELOW FOR CAL VIZ */
-/*      #cal{
-        width: 800px;
-        margin: 0 auto;
-      }*/
+
   .background {
     fill: #eee;
   }
@@ -122,14 +119,20 @@ code {
     stroke: #ccc;
   }
 
+  .selected {
+    fill-opacity: 100%;
+  }
+
+  .not-selected {
+    fill-opacity: 10%
+  }
+
   .month {
     fill: none;
     stroke: #fff;
     stroke-width: 4px;
   }
-  .year-title {
-    font-size: 1.5em;
-  }
+
 
   /* color ranges */
   /* TODO:; adjust colors */

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import * as d3 from "d3"; // I know stars are bad
+import * as d3 from 'd3'; // I know stars are bad
+import FootLoadViz from './FootLoadViz.js'
 
 class CalendarViz extends Component {
 
@@ -9,6 +10,7 @@ class CalendarViz extends Component {
 
 
 	drawChart() {
+		console.log();
 		var chart_bounds = d3
 		  .select("#cal")
 		  .node()
@@ -115,12 +117,49 @@ class CalendarViz extends Component {
 
 	      rect.filter(function(d) { return d in data; })
 	          .attr("class", function(d) { return "day " + color(data[d]); })
-	        .select("title")
+	          .attr("id", function(d) { return "day"+d; })
+	          .select("title")
 	          .text(function(d) { return d + ": " + percent(data[d]); });
+
+	      // highlight with square when clicked
+	      rect.on("click", click);
+
+	      function click(d) {
+			var day = d3.select("#day"+d);
+
+	      	if (day._groups[0][0] == null) return; // no data
+	      	
+	      	// stroke was doing wierd stuff with overlapping borders,
+	      	// so using opacity rn
+
+	      	// if class there, remove class (unclick)
+	      	if (day.classed("selected")) {
+	      		d3.selectAll(".day")
+	      		  .style("opacity", 1);
+	      	} else {	// if class not there (click) - right now, all the time
+	      		// turn down all opacity
+	      		d3.selectAll(".day")
+	      		  .style("opacity", 0.3)
+	      		  .classed("selected", false);
+	      		// opactiy in full
+	  			day.style("opacity", 1.0)
+	      	  	  .classed("selected", true);
+	      	}
+
+	      	// TODO: linking
+	      	// call a function in another module?? or just break abstractions
+	      	// FootLoadViz.drawChart("avg"); // not working
+
+	      }
+
+
+
 
 	      //  Tooltip
 	      rect.on("mouseover", mouseover);
 	      rect.on("mouseout", mouseout);
+
+
 	      function mouseover(d) {
 	        tooltip.style("visibility", "visible");
 	        var percent_data = (data[d] !== undefined) ? data[d] : 0;
@@ -133,12 +172,11 @@ class CalendarViz extends Component {
 	                    .style("left", (d3.event.pageX)+30 + "px")     
 	                    .style("top", (d3.event.pageY) + "px"); 
 	      }
+
 	      function mouseout (d) {
 	        tooltip.transition()        
 	                .duration(500)      
 	                .style("opacity", 0); 
-	        //var $tooltip = $("#tooltip");
-	        //$tooltip.empty();
 	      }
 
 	    });
