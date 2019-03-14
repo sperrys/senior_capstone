@@ -4,10 +4,17 @@ import * as d3 from "d3"; // I know stars are bad
 class FootLoadViz extends Component {
 
   componentDidMount() {
-    this.drawChart(this.props.elemid);
+    drawFoot(this.props.elemid);
   }
+	        
+	render() {
+	    return <span id={"#" + this.props.id}></span>
+	}
 
-	drawChart(elemid) {
+}
+
+
+export function drawFoot(elemid) {
 		console.log("FOOT DRAW")
 		var chart_bounds = d3
 		  .select("#foot-"+elemid)
@@ -122,13 +129,6 @@ class FootLoadViz extends Component {
 		
 		draw_circles(coords);
 		draw_key();
-		
-	}
-	        
-	render() {
-	    return <span id={"#" + this.props.id}></span>
-	}
-
 }
 
 

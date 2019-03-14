@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3'; // I know stars are bad
-import FootLoadViz from './FootLoadViz.js'
+import { drawFoot } from './FootLoadViz.js'; // get function used for FootLoadViz
 
 class CalendarViz extends Component {
 
   componentDidMount() {
-    this.drawChart();
+    this.drawCal();
   }
 
 
-	drawChart() {
+	drawCal() {
 		console.log();
 		var chart_bounds = d3
 		  .select("#cal")
@@ -146,9 +146,9 @@ class CalendarViz extends Component {
 	      	  	  .classed("selected", true);
 	      	}
 
-	      	// TODO: linking
+	     	// TODO: redraw foot with new data
 	      	// call a function in another module?? or just break abstractions
-	      	// FootLoadViz.drawChart("avg"); // not working
+	      	drawFoot("avg"); 
 
 	      }
 
