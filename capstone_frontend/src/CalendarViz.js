@@ -146,9 +146,11 @@ class CalendarViz extends Component {
 	      	  	  .classed("selected", true);
 	      	}
 
+
+	      	d3.select("#foot-day-viz").remove();
 	     	// TODO: redraw foot with new data
 	      	// call a function in another module?? or just break abstractions
-	      	drawFoot("avg"); 
+	      	drawFoot("day"); 
 
 	      }
 

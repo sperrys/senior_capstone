@@ -5,6 +5,7 @@ class FootLoadViz extends Component {
 
   componentDidMount() {
     drawFoot(this.props.elemid);
+    drawKey(this.props.elemid);
   }
 	        
 	render() {
@@ -13,6 +14,78 @@ class FootLoadViz extends Component {
 
 }
 
+var colors = { 'light': '#c1c1c1', 'med': '#828282', 'med2':'#5b5b5b', 'dark': '#3d3d3d' };
+
+
+function drawKey(elemid) {
+	var chart_bounds = d3
+		  .select("#foot-"+elemid)
+		  .node()
+		  .getBoundingClientRect();
+
+	var w = chart_bounds.width / 2, // was 300
+		h = chart_bounds.width / 30;  // was 50
+
+    var key = d3.select("#footlegend-"+elemid)
+      .append("svg")
+      .attr("width", w*2)
+      .attr("height", h*2.5);
+
+    var legend = key.append("defs")
+      .append("svg:linearGradient")
+      .attr("id", "gradient")
+      .attr("x1", "0%")
+      .attr("y1", "100%")
+      .attr("x2", "100%")
+      .attr("y2", "100%")
+      .attr("spreadMethod", "pad");
+
+    legend.append("stop")
+      .attr("offset", "0%")
+      .attr("stop-color", colors["light"])
+      .attr("stop-opacity", 1);
+
+    legend.append("stop")
+      .attr("offset", "33%")
+      .attr("stop-color", colors["med"])
+      .attr("stop-opacity", 1);
+
+    legend.append("stop")
+      .attr("offset", "66%")
+      .attr("stop-color", colors["med2"])
+      .attr("stop-opacity", 1);
+
+    legend.append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", colors["dark"])
+      .attr("stop-opacity", 1);
+
+    key.append("rect")
+      .attr("width", w)
+      .attr("height", h)
+      .style("fill", "url(#gradient)")
+      .attr("transform", "translate("+h+",0)"); // was 0, 10
+
+    var y = d3.scaleLinear()
+      .range([w, 0])
+      .domain([100, 0]); // changes chart scale
+      					// TODO: make dynamic or final static
+
+    var yAxis = d3.axisBottom()
+      .scale(y)
+      .ticks(3);
+
+    key.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate("+h+","+h+")") // was 0,30
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("axis title");
+}
 
 export function drawFoot(elemid) {
 		console.log("FOOT DRAW")
@@ -22,7 +95,6 @@ export function drawFoot(elemid) {
 		  .getBoundingClientRect();
 
 		var dimension = chart_bounds.width / 2;
-		var colors = { 'light': '#c1c1c1', 'med': '#828282', 'med2':'#5b5b5b', 'dark': '#3d3d3d' };
 		var coords = [{'x': 0.31 * dimension, 'y': 0.45 * dimension, 'val': 'light'},  //left foot: top right
 					  {'x': 0.12 * dimension, 'y': 0.50 * dimension, 'val': 'dark'},   //top left
 					  {'x': 0.17 * dimension, 'y': 0.68 * dimension, 'val': 'light'},  //mid
@@ -38,7 +110,8 @@ export function drawFoot(elemid) {
 		var svg = d3.select("#foot-"+elemid).append('svg')
 			.attr('width', dimension)
 			.attr('height', dimension)
-			.style('background-color', 'white');
+			.style('background-color', 'white')
+			.attr('id', 'foot-'+elemid+'-viz');
 
 
 
@@ -55,72 +128,6 @@ export function drawFoot(elemid) {
 			}
 		}
 
-
-		function draw_key() {
-			var w = chart_bounds.width / 2, // was 300
-				h = chart_bounds.width / 30;  // was 50
-
-		    var key = d3.select("#footlegend-"+elemid)
-		      .append("svg")
-		      .attr("width", w*2)
-		      .attr("height", h*2.5);
-
-		    var legend = key.append("defs")
-		      .append("svg:linearGradient")
-		      .attr("id", "gradient")
-		      .attr("x1", "0%")
-		      .attr("y1", "100%")
-		      .attr("x2", "100%")
-		      .attr("y2", "100%")
-		      .attr("spreadMethod", "pad");
-
-		    legend.append("stop")
-		      .attr("offset", "0%")
-		      .attr("stop-color", colors["light"])
-		      .attr("stop-opacity", 1);
-
-		    legend.append("stop")
-		      .attr("offset", "33%")
-		      .attr("stop-color", colors["med"])
-		      .attr("stop-opacity", 1);
-
-		    legend.append("stop")
-		      .attr("offset", "66%")
-		      .attr("stop-color", colors["med2"])
-		      .attr("stop-opacity", 1);
-
-		    legend.append("stop")
-		      .attr("offset", "100%")
-		      .attr("stop-color", colors["dark"])
-		      .attr("stop-opacity", 1);
-
-		    key.append("rect")
-		      .attr("width", w)
-		      .attr("height", h)
-		      .style("fill", "url(#gradient)")
-		      .attr("transform", "translate("+h+",0)"); // was 0, 10
-
-		    var y = d3.scaleLinear()
-		      .range([w, 0])
-		      .domain([100, 0]); // changes chart scale
-		      					// TODO: make dynamic or final static
-
-		    var yAxis = d3.axisBottom()
-		      .scale(y)
-		      .ticks(3);
-
-		    key.append("g")
-		      .attr("class", "y axis")
-		      .attr("transform", "translate("+h+","+h+")") // was 0,30
-		      .call(yAxis)
-		      .append("text")
-		      .attr("transform", "rotate(-90)")
-		      .attr("y", 0)
-		      .attr("dy", ".71em")
-		      .style("text-anchor", "end")
-		      .text("axis title");
-		}
-
 		// add footprints
 		var feet = svg.append('image')
 		    .attr('xlink:href', './footprints.svg')
@@ -128,7 +135,7 @@ export function drawFoot(elemid) {
 		    .attr('height', dimension)
 		
 		draw_circles(coords);
-		draw_key();
+		
 }
 
 

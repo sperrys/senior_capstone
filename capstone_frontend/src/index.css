@@ -119,14 +119,6 @@ code {
     stroke: #ccc;
   }
 
-  .selected {
-    fill-opacity: 100%;
-  }
-
-  .not-selected {
-    fill-opacity: 10%
-  }
-
   .month {
     fill: none;
     stroke: #fff;
