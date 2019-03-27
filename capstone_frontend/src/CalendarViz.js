@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3'; // I know stars are bad
 import { drawFoot } from './FootLoadViz.js'; // get function used for FootLoadViz
+import { drawBar } from './BarChartViz.js';
 
 class CalendarViz extends Component {
 
@@ -146,11 +147,15 @@ class CalendarViz extends Component {
 	      	  	  .classed("selected", true);
 	      	}
 
-
+	      	// remove current foot and bar chart
 	      	d3.select("#foot-day-viz").remove();
-	     	// TODO: redraw foot with new data
-	      	// call a function in another module?? or just break abstractions
+	      	d3.select("#gait-time-day-viz").remove();
+	      	d3.select("#gait-length-day-viz").remove();
+
+	      	// redraw foot and bar chart
 	      	drawFoot("day"); 
+	      	drawBar("gait-length-day");
+	      	drawBar("gait-time-day");
 
 	      }
 
