@@ -29,7 +29,7 @@ function drawKey(elemid) {
     var key = d3.select("#footlegend-"+elemid)
       .append("svg")
       .attr("width", w*2)
-      .attr("height", h*2.5);
+      .attr("height", h*3);
 
     var legend = key.append("defs")
       .append("svg:linearGradient")
@@ -94,16 +94,33 @@ export function drawFoot(elemid) {
 		  .node()
 		  .getBoundingClientRect();
 
-		var dimension = chart_bounds.width / 2;
-		var coords = [{'x': 0.31 * dimension, 'y': 0.45 * dimension, 'val': 'light'},  //left foot: top right
-					  {'x': 0.12 * dimension, 'y': 0.50 * dimension, 'val': 'dark'},   //top left
-					  {'x': 0.17 * dimension, 'y': 0.68 * dimension, 'val': 'light'},  //mid
-					  {'x': 0.24 * dimension, 'y': 0.89 * dimension, 'val': 'med'},    //bottom
-					  {'x': 0.88 * dimension, 'y': 0.38 * dimension, 'val': 'med'},  //right foot: top right
-					  {'x': 0.70 * dimension, 'y': 0.32 * dimension, 'val': 'light'},   //top left
-					  {'x': 0.82 * dimension, 'y': 0.56 * dimension, 'val': 'med'},  //mid
-					  {'x': 0.74 * dimension, 'y': 0.75 * dimension, 'val': 'dark'}     //bottom
-					  ];
+		var dimension = chart_bounds.width / 1.5;
+    var sm_r = dimension/31;
+    var lg_r = dimension/25;
+		var coords = [
+                  /* LEFT FOOT COORDS */
+                  {'x': 0.27 * dimension, 'y': 0.33 * dimension, 'r': lg_r, 'val': 'light'},  //1L
+                  {'x': 0.28 * dimension, 'y': 0.43 * dimension, 'r': lg_r, 'val': 'dark'},   //2L
+                  {'x': 0.17 * dimension, 'y': 0.46 * dimension, 'r': lg_r, 'val': 'light'},  //3L
+                  {'x': 0.06 * dimension, 'y': 0.50 * dimension, 'r': lg_r, 'val': 'med'},    //4L
+                  {'x': 0.19 * dimension, 'y': 0.62 * dimension, 'r': sm_r, 'val': 'light'},  //5L
+                  {'x': 0.125 * dimension, 'y': 0.62 * dimension, 'r': sm_r, 'val': 'dark'},  //6L
+                  {'x': 0.06 * dimension, 'y': 0.62 * dimension, 'r': sm_r, 'val': 'light'},  //7L
+                  {'x': 0.20 * dimension, 'y': 0.75 * dimension, 'r': lg_r, 'val': 'med'},    //8L
+                  {'x': 0.09 * dimension, 'y': 0.75 * dimension, 'r': lg_r, 'val': 'light'},  //9L
+                  {'x': 0.16 * dimension, 'y': 0.84 * dimension, 'r': lg_r, 'val': 'med'},    //10L
+                  /* RIGHT FOOT COORDS */
+                  {'x': 0.73 * dimension, 'y': 0.33 * dimension, 'r': lg_r, 'val': 'light'},  //1R
+                  {'x': 0.72 * dimension, 'y': 0.43 * dimension, 'r': lg_r, 'val': 'dark'},   //2R
+                  {'x': 0.83 * dimension, 'y': 0.46 * dimension, 'r': lg_r, 'val': 'light'},  //3R
+                  {'x': 0.94 * dimension, 'y': 0.50 * dimension, 'r': lg_r, 'val': 'med'},    //4R
+                  {'x': 0.81 * dimension, 'y': 0.62 * dimension, 'r': sm_r, 'val': 'light'},  //5R
+                  {'x': 0.875 * dimension, 'y': 0.62 * dimension, 'r': sm_r, 'val': 'dark'},  //6R
+                  {'x': 0.94 * dimension, 'y': 0.62 * dimension, 'r': sm_r, 'val': 'light'},  //7R
+                  {'x': 0.80 * dimension, 'y': 0.75 * dimension, 'r': lg_r, 'val': 'med'},    //8R
+                  {'x': 0.91 * dimension, 'y': 0.75 * dimension, 'r': lg_r, 'val': 'light'},  //9R
+                  {'x': 0.84 * dimension, 'y': 0.84 * dimension, 'r': lg_r, 'val': 'med'}     //10R
+                  ];
 		var num_circles = coords.length;
 		var circles = [];
 
@@ -116,12 +133,11 @@ export function drawFoot(elemid) {
 
 
 	    function draw_circles(coords) {
-			var r = dimension/15;
 			for (var i=0; i < num_circles; i++) {
 				var circle = svg.append("circle")
 					.attr('cx', coords[i]['x'])
 					.attr('cy', coords[i]['y'])
-					.attr('r', r)
+					.attr('r', coords[i]['r'])
 					.attr('fill', colors[coords[i].val]);
 
 				circles.push(circle);
