@@ -197,8 +197,10 @@ code {
 }
 
 /* BELOW FOR BAR CHART VIZ */
-.barText {
-	margin-left: 10%;
-
+/* hover info */
+#tooltip-bar {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  padding: 10px;
 }
 		
