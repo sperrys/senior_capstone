@@ -4,7 +4,7 @@ import * as d3 from "d3"; // I know stars are bad
 class FootLoadViz extends Component {
 
   componentDidMount() {
-    drawFoot(this.props.elemid);
+    drawFoot(this.props.elemid, this.props);
     drawKey(this.props.elemid);
   }
 	        
@@ -87,8 +87,9 @@ function drawKey(elemid) {
       .text("axis title");
 }
 
-export function drawFoot(elemid) {
+export function drawFoot(elemid, data) {
 		console.log("FOOT DRAW")
+    console.log(data);
 		var chart_bounds = d3
 		  .select("#foot-"+elemid)
 		  .node()

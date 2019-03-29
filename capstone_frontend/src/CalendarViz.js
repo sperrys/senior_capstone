@@ -108,7 +108,7 @@ class CalendarViz extends Component {
 	      var data = {};
 
 	      // ! Need data for calendar to be accessable by data['date-string']
-	      d.map(function (n) { data[n.date] = n.avg });
+	      d.map(function (n) { data[n.date] = {"avg": n.avg, "points": n.points }});
 
 	      // get month range for data
 	      var months = Object.keys(data).map(function(n) { return parseInt(n.split("-")[1]) });
@@ -117,18 +117,20 @@ class CalendarViz extends Component {
 	      draw_setup(Math.min(...months));
 
 	      rect.filter(function(d) { return d in data; })
-	          .attr("class", function(d) { return "day " + color(data[d]); })
+	          .attr("class", function(d) { return "day " + color(data[d].avg); })
 	          .attr("id", function(d) { return "day"+d; })
 	          .select("title")
-	          .text(function(d) { return d + ": " + percent(data[d]); });
+	          .text(function(d) { return d + ": " + percent(data[d].avg); });
 
 	      // highlight with square when clicked
 	      rect.on("click", click);
 
 	      function click(d) {
-			var day = d3.select("#day"+d);
+			var day = d3.select("#day"+d); // get date
 
 	      	if (day._groups[0][0] == null) return; // no data
+
+	      	console.log(data[d]);
 	      	
 	      	// stroke was doing wierd stuff with overlapping borders,
 	      	// so using opacity rn
@@ -153,7 +155,7 @@ class CalendarViz extends Component {
 	      	d3.select("#gait-length-day-viz").remove();
 
 	      	// redraw foot and bar chart
-	      	drawFoot("day"); 
+	      	drawFoot("day", data[d]); 
 	      	drawBar("gait-length-day");
 	      	drawBar("gait-time-day");
 
