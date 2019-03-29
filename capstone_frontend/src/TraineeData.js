@@ -53,7 +53,7 @@ class Calendar extends Component {
 						specific training day. Each calendar day's color corresponds with the wellbeing 
 						index at that point in time.
 					</div>
-					<div id='cal'><CalendarViz elemid={'cal'}/></div>
+					<div id='cal'><CalendarViz elemid={'cal'} data={this.props.data}/></div>
 				</Panel.Body>
 			</Panel>
 		);
@@ -62,7 +62,6 @@ class Calendar extends Component {
 
 class FootLoad extends Component {
 	render() {
-		console.log(this.props);
 		return (
 			<Panel>
 				<Panel.Heading className='TraineeData-headings'>Foot Load</Panel.Heading>
@@ -119,6 +118,7 @@ class TraineeData extends Component {
 
 	    // TODO: change FootLoad data to be the avg and not first elem
 	    // if data already loaded, render normally
+
 		return (
 			<div className='TraineeData'>
 				<TraineeDataHeader id={this.state.id}/>
