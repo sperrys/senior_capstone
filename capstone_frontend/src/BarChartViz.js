@@ -20,10 +20,10 @@ export function drawBar(elemid) {
 	  .node()
 	  .getBoundingClientRect();
 
-	var dimension = chart_bounds.width / 1.5; // CONTROL OVERALL SIZE
+	var dimension = chart_bounds.width / 1.25; // CONTROL OVERALL SIZE
 
-	var horiz_margin = dimension / 6,
-		vert_margin = dimension / 4; 
+	var horiz_margin = dimension / 4,
+		vert_margin = dimension / 5; 
 
 	var margin = {top: vert_margin, right: horiz_margin, bottom: vert_margin, left: horiz_margin},
 	    width = dimension - margin.left - margin.right,
@@ -51,8 +51,10 @@ export function drawBar(elemid) {
 
 	fetch("/testdata/bar-data.json").then((res) => res.json()).then((data) => {
 
+		var ymax = d3.max(data, function(d) { return d.stride; });
+
 		x.domain(data.map(function(d) { return d.foot; }));
-		y.domain([0, d3.max(data, function(d) { return d.stride; })]);
+		y.domain([0, ymax + (ymax/3)]); // addded is the extra height for bar chart styling
 
 		svg.append("g")
 		    .attr("class", "axis axis--x")
@@ -66,10 +68,11 @@ export function drawBar(elemid) {
 			.attr("transform", "rotate(-90)")
 			.attr("y", 0 - margin.left/1.4)
 			.attr("x",0 - (height / 2))
-			.attr("dy", "1em")
+			.attr("dy", "5%")
 			.style("text-anchor", "middle")
 			.attr("fill", "black")
-			.text("Avg Stride Length (Inches)"); 
+			.attr("class", "y-bar-label")
+			.text("Avg Stride Length (Inches)")
 
 		var bar_width = x.bandwidth() / 1.5;
 		var bar_shift = (x.bandwidth() - bar_width) / 2;
@@ -85,10 +88,11 @@ export function drawBar(elemid) {
 
 		// svg.selectAll(".barText")
 		// 	.data(data)                                 
-		// 	.enter().append("text")
+		// 	.enter().append("g")
 		// 	.attr("class", "barText")
 		// 	.attr("x", function(d) { return x(d.foot); })
 		// 	.attr("y", function(d) { return y(d.stride); })
+		// 	.append("div")
 		// 	.text(function(d) { return d.stride; });
 
 		//  Tooltip
@@ -101,7 +105,7 @@ export function drawBar(elemid) {
 		function mouseover(d) {
 			tooltip.style("visibility", "visible");
 			//var percent_data = (data[d] !== undefined && data[d].avg !== undefined) ? data[d].avg : 0;
-			var text = d.stride;
+			var text = d.stride + " Inches";
 
 			tooltip.transition()        
 			            .duration(200)      

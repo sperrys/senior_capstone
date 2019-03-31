@@ -170,16 +170,6 @@ code {
 .GrayScale .q4-5{fill:#3d3d3d}
 
 
-.axis text {
-		font: 10px sans-serif;
-}
-
-.axis line, .axis path {
-	fill: none;
-	stroke: #000;
-	shape-rendering: crispEdges;
-}
-
 #footlegend-day, #footlegend-avg {
 	padding-left: 19%;
 }
@@ -188,6 +178,16 @@ code {
 	padding-left: 16%;
 }
 
+/* all axes */
+.axis text {
+    font: 1.25em sans-serif;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
 /* BELOW FOR LINE GRAPH VIZ */
 .line {
@@ -203,4 +203,9 @@ code {
   border: 2px solid #ccc;
   padding: 10px;
 }
+
+#gait-length-avg-viz, #gait-length-day-viz, #gait-time-avg-viz, #gait-time-day-viz {
+  padding-left: 15%;
+}
+
 		
