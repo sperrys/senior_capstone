@@ -7,6 +7,7 @@ import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import Col from 'react-bootstrap/lib/Col';
 
 import TraineeDataHeader from './TraineeDataHeader.js';
+import TraineeDataSidebar from './TraineeDataSidebar.js';
 import CalendarViz from './CalendarViz.js';
 import FootLoadViz from './FootLoadViz.js';
 import WBKeyViz from './WBKeyViz.js';
@@ -64,7 +65,7 @@ class FootLoad extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Foot Load</Panel.Heading>
+				<Panel.Heading id={"foot-heading-"+this.props.id}className='TraineeData-headings'>Foot Load</Panel.Heading>
 				<Panel.Body>
 					<div id={"footlegend-"+this.props.id}></div>
 					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id} data={this.props.data}/></div>
@@ -122,6 +123,7 @@ class TraineeData extends Component {
 		return (
 			<div className='TraineeData'>
 				<TraineeDataHeader id={this.state.id}/>
+				<TraineeDataSidebar/>
 				<PanelGroup id='TraineeDataPanel'>
 				<Col xs={6} md={6}>
 					<Summary/>

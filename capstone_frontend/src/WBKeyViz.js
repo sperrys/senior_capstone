@@ -14,10 +14,10 @@ class WBKeyViz extends Component {
 		  .getBoundingClientRect();
 
 		function draw_key() {
-			var colors = { "light": "#a5c7ff",
-			   "med": "#5494ff",
-			   "med2": "#1e72ff",
-			   "dark": "#0044b7"};
+			var colors = { "light": "#ffffff",
+			   "med": "#6f78fc",
+			   "med2": "#000dd3",
+			   "dark": "#00044c"};
 
 			var w = chart_bounds.width / 2, // was 300
 				h = chart_bounds.width / 30;  // was 50
