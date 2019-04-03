@@ -153,6 +153,7 @@ code {
   .RdYlGn .q9-11{fill:#000672}
   .RdYlGn .q10-11{fill:#00044c}
 
+
   /* hover info */
   #tooltip {
     background-color: #fff;
@@ -208,6 +209,19 @@ code {
 }
 
 
+/* WB KEY */
+.stop-left {
+  stop-color: #ffffff;
+}
+
+.stop-middle {
+  stop-color: #0010ff; 
+}
+
+.stop-right {
+    stop-color: #00044c;
+}
+
 /* SIDEBAR */
 
 .sideBarMenuContainer {
@@ -224,4 +238,5 @@ code {
   width: 80%;
   margin-bottom: 0px !important;
 }
+
 		
