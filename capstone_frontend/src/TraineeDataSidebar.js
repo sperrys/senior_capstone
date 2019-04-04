@@ -24,7 +24,7 @@ class TraineeDataSidebar extends Component {
             <Link to='#'><Image className="sidebar-item" src={cal}/></Link>
         </div>
         <div className="sidebar-sq">
-            <Link to='#'><Image className="sidebar-item" src={feet}/></Link>
+            <Link to='#foot-heading-day'><Image className="sidebar-item" src={feet}/></Link>
         </div>
         <div className="sidebar-sq">
             <Link to='#'><Image className="sidebar-item" src={bar}/></Link>

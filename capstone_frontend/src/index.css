@@ -169,6 +169,12 @@ code {
 .GrayScale .q3-5{fill:#5b5b5b}
 .GrayScale .q4-5{fill:#3d3d3d}
 
+.GrayScale .q0-5-stop{stop-color:#ffffff}
+.GrayScale .q1-5-stop{stop-color:#c1c1c1}
+.GrayScale .q2-5-stop{stop-color:#828282}
+.GrayScale .q3-5-stop{stop-color:#5b5b5b}
+.GrayScale .q4-5-stop{stop-color:#3d3d3d}
+
 
 #footlegend-day, #footlegend-avg {
 	padding-left: 19%;
@@ -211,15 +217,15 @@ code {
 
 /* WB KEY */
 .stop-left {
-  stop-color: #ffffff;
+  stop-color: #ffffff; /* q0-11 */
 }
 
 .stop-middle {
-  stop-color: #0010ff; 
+  stop-color: #0010ff; /* q6-11 */
 }
 
 .stop-right {
-    stop-color: #00044c;
+    stop-color: #00044c; /* q11-11 */
 }
 
 /* SIDEBAR */
