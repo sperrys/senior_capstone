@@ -14,10 +14,6 @@ class WBKeyViz extends Component {
 		  .getBoundingClientRect();
 
 		function draw_key() {
-			var colors = { "light": "#a5c7ff",
-			   "med": "#5494ff",
-			   "med2": "#1e72ff",
-			   "dark": "#0044b7"};
 
 			var w = chart_bounds.width / 2, // was 300
 				h = chart_bounds.width / 30;  // was 50
@@ -29,32 +25,19 @@ class WBKeyViz extends Component {
 
 		    var legend = key.append("defs")
 		      .append("svg:linearGradient")
-		      .attr("id", "gradient-wb")
-		      .attr("x1", "0%")
-		      .attr("y1", "100%")
-		      .attr("x2", "100%")
-		      .attr("y2", "100%")
-		      .attr("spreadMethod", "pad");
+		      .attr("id", "gradient-wb");
 
-		    legend.append("stop")
-		      .attr("offset", "0%")
-		      .attr("stop-color", colors["light"])
-		      .attr("stop-opacity", 1);
+		      legend.append('stop')
+                .attr('class', 'stop-left')
+                .attr('offset', '0');
 
-		    legend.append("stop")
-		      .attr("offset", "33%")
-		      .attr("stop-color", colors["med"])
-		      .attr("stop-opacity", 1);
+              legend.append('stop')
+                .attr('class', 'stop-middle')
+                .attr('offset', '0.5');
 
-		    legend.append("stop")
-		      .attr("offset", "66%")
-		      .attr("stop-color", colors["med2"])
-		      .attr("stop-opacity", 1);
-
-		    legend.append("stop")
-		      .attr("offset", "100%")
-		      .attr("stop-color", colors["dark"])
-		      .attr("stop-opacity", 1);
+			  legend.append('stop')
+				.attr('class', 'stop-right')
+				.attr('offset', '1');
 
 		    key.append("rect")
 		      .attr("width", w)

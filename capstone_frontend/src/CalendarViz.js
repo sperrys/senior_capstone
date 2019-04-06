@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3'; // I know stars are bad
 import { drawFoot } from './FootLoadViz.js'; // get function used for FootLoadViz
+import { drawBar } from './BarChartViz.js';
 
 class CalendarViz extends Component {
 
   componentDidMount() {
-    this.drawCal();
+    this.drawCal(this.props.data);
   }
 
 
-	drawCal() {
-		console.log();
+	drawCal(caldata) {
+		console.log("in draw cal");
+		console.log(caldata);
+
 		var chart_bounds = d3
 		  .select("#cal")
 		  .node()
@@ -18,13 +21,11 @@ class CalendarViz extends Component {
 
 		var cellSize = chart_bounds.width / 13, // cell size
 		  height = cellSize * 10,
-		  width = cellSize * 10;
-
-		// var theme_color = "#0b53c6";
+		  width = cellSize * 13;
 
 	    var no_months_in_a_row = Math.floor(width / (cellSize * 7 + 50));
 	    var shift_up = cellSize * 4;
-	    var shift_right = cellSize * 4;
+	    var shift_right = cellSize * 3;
 
 	    var day = d3.timeFormat("%w"), // day of the week
 	        day_of_month = d3.timeFormat("%e"), // day of the month
@@ -37,7 +38,7 @@ class CalendarViz extends Component {
 
 	    var color = d3.scaleQuantize()
 	        .domain([0, 200]) //TODO: adjust or make dynamic
-	         .range(d3.range(11).map(function(d) { return "q" + d + "-11"; })); // TODO: 11 buckets??
+	         .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
 	    var svg = d3.select("#cal").selectAll("svg")
 	        .data(d3.range(2019, 2020))
@@ -46,6 +47,7 @@ class CalendarViz extends Component {
 	        .attr("width", width)
 	        .attr("height", height)
 	        .attr("class", "RdYlGn")
+	        .attr("id", "cal-viz")
 	        .append("g")
 
 	    var rect, month_titles, year_titles, tooltip; // need for scope and both functions to work OK
@@ -80,7 +82,7 @@ class CalendarViz extends Component {
 	            .text(monthTitle)
 	            .attr("x", function(d, i) {
 	              var month_padding = 1.2 * cellSize*7* ((month(d)-1) % (no_months_in_a_row));
-	              return month_padding + shift_right*1.5;
+	              return month_padding + shift_right*1.7;
 	            })
 	            .attr("y", function(d, i) {
 	              var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
@@ -100,86 +102,89 @@ class CalendarViz extends Component {
 
 	    }
 
-	    // get data and fill in drawing
 	    // TODO: Fix color buckets
-	    fetch("./testdata/cal-data.json").then((res) => res.json()).then((d) => {
 
-	      var data = {};
+		// ! Need data for calendar to be accessable by data['date-string']
+		// ! date field is for foot viz
+		var data = {};
+		caldata.map(function (n) { data[n.date] = {avg: n.avg, points: n.points, date: n.date }});
 
-	      // ! Need data for calendar to be accessable by data['date-string']
-	      d.map(function (n) { data[n.date] = n.avg });
+		// get month range for data
+		var months = Object.keys(data).map(function(n) { return parseInt(n.split("-")[1]) });
 
-	      // get month range for data
-	      var months = Object.keys(data).map(function(n) { return parseInt(n.split("-")[1]) });
+		// draw rectangles and stuff based on range
+		draw_setup(Math.min(...months));
 
-	      // draw rectangles and stuff based on range
-	      draw_setup(Math.min(...months));
+		rect.filter(function(d) { return d in data; })
+		  .attr("class", function(d) { return "day " + color(data[d].avg); })
+		  .attr("id", function(d) { return "day"+d; })
+		  .select("title")
+		  .text(function(d) { return d + ": " + percent(data[d].avg); });
 
-	      rect.filter(function(d) { return d in data; })
-	          .attr("class", function(d) { return "day " + color(data[d]); })
-	          .attr("id", function(d) { return "day"+d; })
-	          .select("title")
-	          .text(function(d) { return d + ": " + percent(data[d]); });
+		// highlight with square when clicked
+		rect.on("click", click);
 
-	      // highlight with square when clicked
-	      rect.on("click", click);
+		function click(d) {
+		var day = d3.select("#day"+d); // get date
 
-	      function click(d) {
-			var day = d3.select("#day"+d);
+			if (day._groups[0][0] == null) return; // no data
 
-	      	if (day._groups[0][0] == null) return; // no data
-	      	
-	      	// stroke was doing wierd stuff with overlapping borders,
-	      	// so using opacity rn
+			console.log(data[d]);
+			
+			// stroke was doing wierd stuff with overlapping borders,
+			// so using opacity rn
 
-	      	// if class there, remove class (unclick)
-	      	if (day.classed("selected")) {
-	      		d3.selectAll(".day")
-	      		  .style("opacity", 1);
-	      	} else {	// if class not there (click) - right now, all the time
-	      		// turn down all opacity
-	      		d3.selectAll(".day")
-	      		  .style("opacity", 0.3)
-	      		  .classed("selected", false);
-	      		// opactiy in full
-	  			day.style("opacity", 1.0)
-	      	  	  .classed("selected", true);
-	      	}
+			// if class there, remove class (unclick)
+			if (day.classed("selected")) {
+				d3.selectAll(".day")
+				  .style("opacity", 1);
+			} else {	// if class not there (click) - right now, all the time
+				// turn down all opacity
+				d3.selectAll(".day")
+				  .style("opacity", 0.3)
+				  .classed("selected", false);
+				// opactiy in full
+				day.style("opacity", 1.0)
+			  	  .classed("selected", true);
+			}
 
-	     	// TODO: redraw foot with new data
-	      	// call a function in another module?? or just break abstractions
-	      	drawFoot("avg"); 
+			// remove current foot and bar chart
+			d3.select("#foot-day-viz").remove();
+			d3.select("#gait-time-day-viz").remove();
+			d3.select("#gait-length-day-viz").remove();
 
-	      }
+			// redraw foot and bar chart
+			drawFoot("day", data[d]); 
+			drawBar("gait-length-day");
+			drawBar("gait-time-day");
 
-
-
-
-	      //  Tooltip
-	      rect.on("mouseover", mouseover);
-	      rect.on("mouseout", mouseout);
+		}
 
 
-	      function mouseover(d) {
-	        tooltip.style("visibility", "visible");
-	        var percent_data = (data[d] !== undefined) ? data[d] : 0;
-	        var purchase_text = d + ": " + percent_data + " lbs";
+		//  Tooltip
+		rect.on("mouseover", mouseover);
+		rect.on("mouseout", mouseout);
 
-	        tooltip.transition()        
-	                    .duration(200)      
-	                    .style("opacity", .9);      
-	        tooltip.html(purchase_text)  
-	                    .style("left", (d3.event.pageX)+30 + "px")     
-	                    .style("top", (d3.event.pageY) + "px"); 
-	      }
 
-	      function mouseout (d) {
-	        tooltip.transition()        
-	                .duration(500)      
-	                .style("opacity", 0); 
-	      }
+		function mouseover(d) {
+		tooltip.style("visibility", "visible");
+		var percent_data = (data[d] !== undefined && data[d].avg !== undefined) ? data[d].avg : 0;
+		var purchase_text = d + ": " + percent_data + " lbs";
 
-	    });
+		tooltip.transition()        
+		            .duration(200)      
+		            .style("opacity", .9);      
+		tooltip.html(purchase_text)  
+		            .style("left", (d3.event.pageX)+30 + "px")     
+		            .style("top", (d3.event.pageY) + "px"); 
+		}
+
+		function mouseout (d) {
+		tooltip.transition()        
+		        .duration(500)      
+		        .style("opacity", 0); 
+		}
+
 
 	    function dayTitle (t0) {
 	      return t0.toString().split(" ")[2];

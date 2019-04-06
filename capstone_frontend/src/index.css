@@ -119,14 +119,6 @@ code {
     stroke: #ccc;
   }
 
-  .selected {
-    fill-opacity: 100%;
-  }
-
-  .not-selected {
-    fill-opacity: 10%
-  }
-
   .month {
     fill: none;
     stroke: #fff;
@@ -136,7 +128,8 @@ code {
 
   /* color ranges */
   /* TODO:; adjust colors */
-  .RdYlGn .q0-11{fill:rgb(165,0,38)}
+
+/*  .RdYlGn .q0-11{fill:rgb(165,0,38)}
   .RdYlGn .q1-11{fill:rgb(215,48,39)}
   .RdYlGn .q2-11{fill:rgb(244,109,67)}
   .RdYlGn .q3-11{fill:rgb(253,174,97)}
@@ -146,7 +139,20 @@ code {
   .RdYlGn .q7-11{fill:rgb(166,217,106)}
   .RdYlGn .q8-11{fill:rgb(102,189,99)}
   .RdYlGn .q9-11{fill:rgb(26,152,80)}
-  .RdYlGn .q10-11{fill:rgb(0,104,55)}
+  .RdYlGn .q10-11{fill:rgb(0,104,55)}*/
+
+  .RdYlGn .q0-11{fill:#ffffff}
+  .RdYlGn .q1-11{fill:#c1c5ff}
+  .RdYlGn .q2-11{fill:#9198ff}
+  .RdYlGn .q3-11{fill:#6f78fc}
+  .RdYlGn .q4-11{fill:#4753ff}
+  .RdYlGn .q5-11{fill:#212fff}
+  .RdYlGn .q6-11{fill:#0010ff}
+  .RdYlGn .q7-11{fill:#000dd3}
+  .RdYlGn .q8-11{fill:#000aaa}
+  .RdYlGn .q9-11{fill:#000672}
+  .RdYlGn .q10-11{fill:#00044c}
+
 
   /* hover info */
   #tooltip {
@@ -156,25 +162,38 @@ code {
   }
 
 /* BELOW FOR FOOT VIZ */
-.axis text {
-		font: 10px sans-serif;
-}
+/* color ranges */
+.GrayScale .q0-5{fill:#ffffff}
+.GrayScale .q1-5{fill:#c1c1c1}
+.GrayScale .q2-5{fill:#828282}
+.GrayScale .q3-5{fill:#5b5b5b}
+.GrayScale .q4-5{fill:#3d3d3d}
 
-.axis line, .axis path {
-	fill: none;
-	stroke: #000;
-	shape-rendering: crispEdges;
-}
+.GrayScale .q0-5-stop{stop-color:#ffffff}
+.GrayScale .q1-5-stop{stop-color:#c1c1c1}
+.GrayScale .q2-5-stop{stop-color:#828282}
+.GrayScale .q3-5-stop{stop-color:#5b5b5b}
+.GrayScale .q4-5-stop{stop-color:#3d3d3d}
+
 
 #footlegend-day, #footlegend-avg {
-	padding-bottom: 5%;
 	padding-left: 19%;
 }
 
 #foot-day, #foot-avg {
-	padding-left: 22%;
+	padding-left: 16%;
 }
 
+/* all axes */
+.axis text {
+    font: 1.25em sans-serif;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
 /* BELOW FOR LINE GRAPH VIZ */
 .line {
@@ -184,8 +203,46 @@ code {
 }
 
 /* BELOW FOR BAR CHART VIZ */
-.barText {
-	margin-left: 10%;
-
+/* hover info */
+#tooltip-bar {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  padding: 10px;
 }
+
+#gait-length-avg-viz, #gait-length-day-viz, #gait-time-avg-viz, #gait-time-day-viz {
+  padding-left: 15%;
+}
+
+
+/* WB KEY */
+.stop-left {
+  stop-color: #ffffff; /* q0-11 */
+}
+
+.stop-middle {
+  stop-color: #0010ff; /* q6-11 */
+}
+
+.stop-right {
+    stop-color: #00044c; /* q11-11 */
+}
+
+/* SIDEBAR */
+
+.sideBarMenuContainer {
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar-item {
+  height: 30%;
+  width: auto;
+}
+
+.sidebar-nav {
+  width: 80%;
+  margin-bottom: 0px !important;
+}
+
 		

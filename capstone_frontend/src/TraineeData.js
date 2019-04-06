@@ -7,6 +7,7 @@ import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import Col from 'react-bootstrap/lib/Col';
 
 import TraineeDataHeader from './TraineeDataHeader.js';
+import TraineeDataSidebar from './TraineeDataSidebar.js';
 import CalendarViz from './CalendarViz.js';
 import FootLoadViz from './FootLoadViz.js';
 import WBKeyViz from './WBKeyViz.js';
@@ -53,7 +54,7 @@ class Calendar extends Component {
 						specific training day. Each calendar day's color corresponds with the wellbeing 
 						index at that point in time.
 					</div>
-					<div id='cal'><CalendarViz elemid={'cal'}/></div>
+					<div id='cal'><CalendarViz elemid={'cal'} data={this.props.data}/></div>
 				</Panel.Body>
 			</Panel>
 		);
@@ -64,10 +65,10 @@ class FootLoad extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Foot Load</Panel.Heading>
+				<Panel.Heading id={"foot-heading-"+this.props.id}className='TraineeData-headings'>Foot Load</Panel.Heading>
 				<Panel.Body>
 					<div id={"footlegend-"+this.props.id}></div>
-					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id}/></div>
+					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id} data={this.props.data}/></div>
 				</Panel.Body>
 			</Panel>
 		);
@@ -93,33 +94,45 @@ class TraineeData extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	      error: null,
-	      isLoaded: false,
-	      data: [],
+	      loading: true,
+	      data: null,
 	      id: props.match.params.id,
 	    };
   	}
+
+
+  	componentDidMount() {
+  		var id = this.state.id;
+  		fetch("./testdata/cal-data.json").then((res) => res.json())
+  										 .then((data) => { this.setState({loading: false, data: data, id: id})});
+  	}
+
+
 
 	render() {
 		var avg = "avg";
 		var day = "day";
 
-		// TODO: can also pass in data for viz here if just get one data dump
-		// TODO: initial load of right panel use first date and use id data from
-	    //       calendar to pass data through
+	    // if loading, send dummy div
+	    if (this.state.loading)
+	    	return (<div className='TraineeData'></div>);
+
+	    // TODO: change FootLoad data to be the avg and not first elem
+	    // if data already loaded, render normally
 
 		return (
 			<div className='TraineeData'>
 				<TraineeDataHeader id={this.state.id}/>
+				<TraineeDataSidebar/>
 				<PanelGroup id='TraineeDataPanel'>
 				<Col xs={6} md={6}>
 					<Summary/>
-					<FootLoad id={avg}/>
+					<FootLoad id={avg} data={this.state.data[0]}/>
 					<GaitAsym id={avg}/>
 				</Col>
 				<Col xs={6} md={6}>
-					<Calendar/>
-					<FootLoad id={day}/>
+					<Calendar data={this.state.data}/>
+					<FootLoad id={day} data={this.state.data[0]}/>
 					<GaitAsym id={day}/>
 				</Col>
 				</PanelGroup>
