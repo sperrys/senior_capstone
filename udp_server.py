@@ -59,7 +59,6 @@ def main():
 
 
 def send_to_server(data, retrys=5):
-    print(data)
     if retrys == 0:
         sys.exit()
     try:
