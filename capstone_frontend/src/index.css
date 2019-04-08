@@ -57,6 +57,7 @@ code {
 	font-weight: bold;
 }
 
+
 .Notes-heading {
 	background-color: #cccccc !important;
 	padding-left: 47% !important;
@@ -88,7 +89,7 @@ code {
 }
 
 .navbar-default {
-	background-color: #000000 !important; 
+	background-color: #021449 !important; 
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -232,17 +233,12 @@ code {
 
 .sideBarMenuContainer {
     position: fixed;
-    height: 100%;
+    border: 1px solid #021449;
 }
 
-.sidebar-item {
-  height: 30%;
-  width: auto;
-}
-
-.sidebar-nav {
-  width: 80%;
-  margin-bottom: 0px !important;
+.sidebar-sq {
+  height: 50px;
+  width: 50px;
 }
 
 		

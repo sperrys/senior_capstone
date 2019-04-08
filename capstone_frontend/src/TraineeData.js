@@ -47,7 +47,7 @@ class Calendar extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Choose a Date</Panel.Heading>
+				<Panel.Heading id="cal-heading" className='TraineeData-headings'>Choose a Date</Panel.Heading>
 				<Panel.Body>
 					<div id='cal-desciption'> 
 						Select a date to view the foot pressure and gait analysis during a 
@@ -79,7 +79,7 @@ class GaitAsym extends Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Gait Analysis</Panel.Heading>
+				<Panel.Heading id={"gait-heading-"+this.props.id} className='TraineeData-headings'>Gait Analysis</Panel.Heading>
 				<Panel.Body>
 					<div id={"gait-length-"+this.props.id}><BarChartViz elemid={"gait-length-"+this.props.id}/></div>
 					<div id={"gait-time-"+this.props.id}><BarChartViz elemid={"gait-time-"+this.props.id}/></div>

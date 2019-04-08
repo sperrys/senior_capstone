@@ -102,7 +102,7 @@ export function drawFoot(elemid, footdata) {
 
 		var dimension = chart_bounds.width / 1.5;
     var sm_r = dimension/26;
-    var lg_r = dimension/26;//dimension/25;
+    var lg_r = dimension/26;
 		var coords = [
                   /* LEFT FOOT COORDS */
                   {'x': 0.27 * dimension, 'y': 0.33 * dimension, 'r': lg_r, 'coord': '1L'},  //1L
@@ -258,8 +258,69 @@ export function drawFoot(elemid, footdata) {
 		    .attr('xlink:href', './footprints.svg')
 		    .attr('width', dimension)
 		    .attr('height', dimension)
-		
+
 		draw_circles(coords);
+
+
+
+    // add labels to feet
+    // center avg label
+    svg.append("g")
+      .append("text")
+      .attr("y", 0.62 * dimension)
+      .attr("x", 0.44 * dimension)
+      .attr("fill", "black")
+      .attr("font-weight", "bold")
+      .text(footdata.avg+" lbs")
+
+    svg.append("g")
+      .append("text")
+      .attr("y", 0.62 * dimension)
+      .attr("x", 0.50 * dimension)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .attr("font-size", "0.8em")
+      .attr("fill", "black")
+      .text("Avg Total Load")
+
+    // left foot - STILL NEEDS WORK
+    svg.append("g")
+      .append("text")
+      .attr("y", 0.96 * dimension)
+      .attr("x", 0.12 * dimension)
+      .attr("fill", "black")
+      .attr("font-weight", "bold")
+      .text(footdata.avg+" lbs") //CHANGE TO LEFT
+
+    svg.append("g")
+      .append("text")
+      .attr("y", 0.96 * dimension)
+      .attr("x", 0.17 * dimension)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .attr("fill", "black")
+      .attr("font-size", "0.8em")
+      .text("Avg Left Foot Load")
+
+    svg.append("g")
+      .append("text")
+      .attr("y", 0.96 * dimension)
+      .attr("x", 0.76 * dimension)
+      .attr("fill", "black")
+      .attr("font-weight", "bold")
+      .text(footdata.avg+" lbs") //CHANGE TO RIGHT
+
+
+    svg.append("g")
+      .append("text")
+      .attr("y", 0.96 * dimension)
+      .attr("x", 0.82 * dimension)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .attr("fill", "black")
+      .attr("font-size", "0.8em")
+      .text("Avg Right Foot Load")
+
     //draw_ellipses(l567, r567, l12, l234);
 		
 }
