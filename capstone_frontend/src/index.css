@@ -1,5 +1,5 @@
 html {
-  background-color: #C3CEE1;
+  background-color: #E1E8EF;
 }
 
 body {
@@ -10,6 +10,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#Panel-avg, #Panel-day {
+  width: 45%;
+}
+
+#Panel-avg {
+  margin-left: 5%;
+}
+
+.Panel-Summary, .Panel-Cal, .Panel-Gait {
+  background-color: white;
+  padding: 2em;
+}
+
+.Panel-FootLoad {
+  padding: 2em;
+  background-color: #cccccc; /* FIX GRAY */
+}
+
+.Panel-Summary {
+  border-radius: 25px 0px 0px 0px;
+}
+
+.Panel-Cal {
+  border-radius: 0px 25px 0px 0px;
+}
+
+.Panel-Gait {
+  border-radius: 0px 0px 25px 25px;
 }
 
 .Header-arrow {
@@ -61,7 +91,7 @@ body {
   padding: 5%;
   background-color: #484E86;
   color: white;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 25px 25px 0px 0px;
 }
 
 .TraineeData-tab-day {
@@ -69,7 +99,7 @@ body {
   padding: 5%;
   background-color: #484E86;
   color: white;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 25px 25px 0px 0px;
 }
 
 

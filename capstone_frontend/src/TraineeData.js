@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
 
-import Panel from 'react-bootstrap/lib/Panel';
-import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import Col from 'react-bootstrap/lib/Col';
 
 import TraineeDataHeader from './TraineeDataHeader.js';
@@ -18,13 +16,11 @@ import BarChartViz from './BarChartViz.js';
 
 
 class Summary extends Component {
-	// TODO: add box on wellbeing scale
-	// TODO: Use different line graph with axes
 	render() {
 		return (
-			<Panel>
-				<Panel.Heading className='TraineeData-headings'>Summary Details</Panel.Heading>
-				<Panel.Body>
+			<div className="Panel-Summary">
+				<div className='TraineeData-headings'>Summary Details</div>
+				<div>
 					<div id="summ-wellbeing">Wellbeing Index <WBKeyViz elemid={"summ-wellbeing"}/></div>
 					<div id="summ-wb-descr">
 						The Wellbeing Index is based off of data collected on changes in foot pressure,
@@ -38,8 +34,8 @@ class Summary extends Component {
 						length, and stride time. The Load Carried weight includes the soldier&apos;s weight
 						and gear carried.
 					</div>
-				</Panel.Body>
-			</Panel>
+				</div>
+			</div>
 		);
 	}
 }
@@ -48,17 +44,17 @@ class Summary extends Component {
 class Calendar extends Component {
 	render() {
 		return (
-			<Panel>
-				<Panel.Heading id="cal-heading" className='TraineeData-headings'>Choose a Date</Panel.Heading>
-				<Panel.Body>
+			<div className="Panel-Cal">
+				<div id="cal-heading" className='TraineeData-headings'>Choose a Date</div>
+				<div>
 					<div id='cal-desciption'> 
 						Select a date to view the foot pressure and gait analysis during a 
 						specific training day. Each calendar day's color corresponds with the wellbeing 
 						index at that point in time.
 					</div>
 					<div id='cal'><CalendarViz elemid={'cal'} data={this.props.data}/></div>
-				</Panel.Body>
-			</Panel>
+				</div>
+			</div>
 		);
 	}
 }
@@ -66,13 +62,13 @@ class Calendar extends Component {
 class FootLoad extends Component {
 	render() {
 		return (
-			<Panel>
-				<Panel.Heading id={"foot-heading-"+this.props.id}className='TraineeData-headings'>Foot Load</Panel.Heading>
-				<Panel.Body>
+			<div className="Panel-FootLoad">
+				<div id={"foot-heading-"+this.props.id}className='TraineeData-headings'>Foot Load</div>
+				<div>
 					<div id={"footlegend-"+this.props.id}></div>
 					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id} data={this.props.data}/></div>
-				</Panel.Body>
-			</Panel>
+				</div>
+			</div>
 		);
 	}
 }
@@ -80,13 +76,13 @@ class FootLoad extends Component {
 class GaitAsym extends Component {
 	render() {
 		return (
-			<Panel>
-				<Panel.Heading id={"gait-heading-"+this.props.id} className='TraineeData-headings'>Gait Analysis</Panel.Heading>
-				<Panel.Body>
+			<div className="Panel-Gait">
+				<div id={"gait-heading-"+this.props.id} className='TraineeData-headings'>Gait Analysis</div>
+				<div>
 					<div id={"gait-length-"+this.props.id}><BarChartViz elemid={"gait-length-"+this.props.id}/></div>
 					<div id={"gait-time-"+this.props.id}><BarChartViz elemid={"gait-time-"+this.props.id}/></div>
-				</Panel.Body>
-			</Panel>
+				</div>
+			</div>
 		);
 	}
 }
@@ -148,20 +144,20 @@ class TraineeData extends Component {
 			<div className='TraineeData'>
 				<TraineeDataHeader id={this.state.id}/>
 				<TraineeDataSidebar/>
-				<PanelGroup id='TraineeDataPanel'>
-				<Col xs={6} md={6}>
+				<div id='TraineeDataPanel'>
+				<Col id='Panel-avg' xs={6} md={6}>
 					<AvgTab/>
 					<Summary/>
 					<FootLoad id={avg} data={this.state.data[0]}/>
 					<GaitAsym id={avg}/>
 				</Col>
-				<Col xs={6} md={6}>
+				<Col id='Panel-day' xs={6} md={6}>
 					<DayTab/>
 					<Calendar data={this.state.data}/>
 					<FootLoad id={day} data={this.state.data[0]}/>
 					<GaitAsym id={day}/>
 				</Col>
-				</PanelGroup>
+				</div>
 			</div>
 		);
 	}
