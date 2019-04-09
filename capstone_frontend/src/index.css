@@ -1,3 +1,7 @@
+html {
+  background-color: #C3CEE1;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,11 +10,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 .Header-arrow {
@@ -57,6 +56,22 @@ code {
 	font-weight: bold;
 }
 
+.TraineeData-tab-avg {
+  margin-left: 25%;
+  padding: 5%;
+  background-color: #484E86;
+  color: white;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.TraineeData-tab-day {
+  margin-right: 25%;
+  padding: 5%;
+  background-color: #484E86;
+  color: white;
+  border-radius: 10px 10px 0px 0px;
+}
+
 
 .Notes-heading {
 	background-color: #cccccc !important;
@@ -93,7 +108,7 @@ code {
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #cccccc !important;
+	color: white !important;
 }
 
 .panel-group {
@@ -128,31 +143,18 @@ code {
 
 
   /* color ranges */
-  /* TODO:; adjust colors */
 
-/*  .RdYlGn .q0-11{fill:rgb(165,0,38)}
-  .RdYlGn .q1-11{fill:rgb(215,48,39)}
-  .RdYlGn .q2-11{fill:rgb(244,109,67)}
-  .RdYlGn .q3-11{fill:rgb(253,174,97)}
-  .RdYlGn .q4-11{fill:rgb(254,224,139)}
-  .RdYlGn .q5-11{fill:rgb(255,255,191)}
-  .RdYlGn .q6-11{fill:rgb(217,239,139)}
-  .RdYlGn .q7-11{fill:rgb(166,217,106)}
-  .RdYlGn .q8-11{fill:rgb(102,189,99)}
-  .RdYlGn .q9-11{fill:rgb(26,152,80)}
-  .RdYlGn .q10-11{fill:rgb(0,104,55)}*/
-
-  .RdYlGn .q0-11{fill:#ffffff}
-  .RdYlGn .q1-11{fill:#c1c5ff}
-  .RdYlGn .q2-11{fill:#9198ff}
-  .RdYlGn .q3-11{fill:#6f78fc}
-  .RdYlGn .q4-11{fill:#4753ff}
-  .RdYlGn .q5-11{fill:#212fff}
-  .RdYlGn .q6-11{fill:#0010ff}
-  .RdYlGn .q7-11{fill:#000dd3}
-  .RdYlGn .q8-11{fill:#000aaa}
-  .RdYlGn .q9-11{fill:#000672}
-  .RdYlGn .q10-11{fill:#00044c}
+  .RdYlGn .q0-11{fill:#703C2D}
+  .RdYlGn .q1-11{fill:#B84A29}
+  .RdYlGn .q2-11{fill:#E66731}
+  .RdYlGn .q3-11{fill:#F3B355}
+  .RdYlGn .q4-11{fill:#F6CA67}
+  .RdYlGn .q5-11{fill:#FDED82}
+  .RdYlGn .q6-11{fill:#F5F860}
+  .RdYlGn .q7-11{fill:#C8F355}
+  .RdYlGn .q8-11{fill:#7FE631}
+  .RdYlGn .q9-11{fill:#48B829}
+  .RdYlGn .q10-11{fill:#2D7037}
 
 
   /* hover info */
@@ -218,15 +220,15 @@ code {
 
 /* WB KEY */
 .stop-left {
-  stop-color: #ffffff; /* q0-11 */
+  stop-color: #703C2D; /* q0-11 */
 }
 
 .stop-middle {
-  stop-color: #0010ff; /* q6-11 */
+  stop-color: #FDED82; /* q6-11 */
 }
 
 .stop-right {
-    stop-color: #00044c; /* q11-11 */
+    stop-color: #2D7037; /* q11-11 */
 }
 
 /* SIDEBAR */

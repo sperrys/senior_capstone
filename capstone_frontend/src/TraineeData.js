@@ -15,6 +15,8 @@ import LineGraphViz from './LineGraphViz.js';
 import BarChartViz from './BarChartViz.js';
 
 
+
+
 class Summary extends Component {
 	// TODO: add box on wellbeing scale
 	// TODO: Use different line graph with axes
@@ -90,6 +92,28 @@ class GaitAsym extends Component {
 }
 
 
+class AvgTab extends Component {
+
+	render () {
+		return (
+			<div className="TraineeData-tab-avg">
+				Date that this was collected
+			</div>)
+	}
+}
+
+class DayTab extends Component {
+
+	render () {
+		return (
+			<div className="TraineeData-tab-day">
+				Date that this was collected
+			</div>)
+	}
+}
+
+
+
 class TraineeData extends Component {
 	constructor(props) {
 	    super(props);
@@ -126,11 +150,13 @@ class TraineeData extends Component {
 				<TraineeDataSidebar/>
 				<PanelGroup id='TraineeDataPanel'>
 				<Col xs={6} md={6}>
+					<AvgTab/>
 					<Summary/>
 					<FootLoad id={avg} data={this.state.data[0]}/>
 					<GaitAsym id={avg}/>
 				</Col>
 				<Col xs={6} md={6}>
+					<DayTab/>
 					<Calendar data={this.state.data}/>
 					<FootLoad id={day} data={this.state.data[0]}/>
 					<GaitAsym id={day}/>
