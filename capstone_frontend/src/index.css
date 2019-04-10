@@ -23,11 +23,13 @@ body {
 .Panel-Summary, .Panel-Cal, .Panel-Gait {
   background-color: white;
   padding: 2em;
+  box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
 
 .Panel-FootLoad {
   padding: 2em;
   background-color: #cccccc; /* FIX GRAY */
+  box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
 
 .Panel-Summary {
@@ -65,7 +67,7 @@ body {
 
 
 #TraineeList-Notes {
-  margin-top: 8%;
+  margin-top: 5%;
   border-radius: 25px 25px 0px 0px;
   height: 10%;
 }
@@ -76,7 +78,9 @@ body {
   margin-right: 5%;
   margin-left: 5%;
   border: 1px solid #E1E8EF;
+  box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
+
 
 .TrainingSession-members {
 	padding-left: 40%;
@@ -107,6 +111,7 @@ body {
   background-color: #484E86;
   color: white;
   border-radius: 25px 25px 0px 0px;
+  box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
 
 .TraineeData-tab-day {
@@ -115,6 +120,7 @@ body {
   background-color: #484E86;
   color: white;
   border-radius: 25px 25px 0px 0px;
+  box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
 
 
@@ -140,6 +146,8 @@ body {
 
 .navbar-default {
 	background-color: #021449 !important; 
+  padding-bottom: 1em;
+  padding-top: 1em;
 }
 
 .navbar-default .navbar-nav > li > a {
