@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Trainee from './Trainee.js'
 import './App.css';
 
-import PanelGroup from 'react-bootstrap/lib/PanelGroup';
-import Panel from 'react-bootstrap/lib/Panel';
+import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
+
 import TraineeListHeader from './TraineeListHeader.js';
+import WBKeyViz from './WBKeyViz.js';
 
 
 class TraineeList extends Component {
@@ -34,10 +36,8 @@ class TraineeList extends Component {
     	// an individual training session
       <div className="TraineeList">
         <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist}/>
-  			<PanelGroup id="TraineeListPanel">
-          <Notes notes={this.state.data.notes}/>
-          {panelItems}
-        </PanelGroup>
+        <Notes notes={this.state.data.notes}/>
+        {panelItems}
       </div>
     );
   }
@@ -49,11 +49,18 @@ export default TraineeList;
 
 class Notes extends Component {
   render () {
+    var wbkey_id = "TraineeList-wbkey";
+
     return (
-      <Panel className="Notes-panel">
-        <Panel.Heading className="Notes-heading">Notes</Panel.Heading>
-        <Panel.Body className="Notes-body">{this.props.notes}</Panel.Body>
-      </Panel>
+          <Row id="TraineeList-Notes">
+            <Col xs={5} md={5}><span className="Trainee-name">Identifier</span></Col>
+            <Col xs={2} md={2}>
+              <div id={wbkey_id}><WBKeyViz elemid={wbkey_id}/></div>
+            </Col>
+            <Col xs={4} md={4}>
+              <div >Key</div>
+            </Col>
+          </Row>
       )
   }
 }

@@ -7,7 +7,6 @@ import WBSquareViz from './WBSquareViz.js';
 import Image from 'react-bootstrap/lib/Image';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
-import Panel from 'react-bootstrap/lib/Panel';
 
 import arrow from './images/forward-arrow.png';
 
@@ -21,8 +20,7 @@ class Trainee extends Component {
 
     return (
     // an individual trainee for the list of trainees by session
-      <Panel className="Trainee">
-        <Panel.Body>
+      <div className="Trainee">
           <Row>
             <Col xs={5} md={5}><span className="Trainee-name">Soldier {this.props.id}</span></Col>
             <Col xs={2} md={2}>
@@ -35,8 +33,7 @@ class Trainee extends Component {
             <Link to={path}><Image className="Trainee-arrow" src={arrow}/></Link>
             </Col>
           </Row>
-        </Panel.Body>
-      </Panel>
+      </div>
     );
   }
 }

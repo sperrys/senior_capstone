@@ -1,4 +1,4 @@
-html {
+html, .TraineeList {
   background-color: #E1E8EF;
 }
 
@@ -63,6 +63,21 @@ body {
 	padding-left: 10%;
 }
 
+
+#TraineeList-Notes {
+  margin-top: 8%;
+  border-radius: 25px 25px 0px 0px;
+  height: 10%;
+}
+
+.Trainee, #TraineeList-Notes {
+  background-color: white; 
+  padding: 2em;
+  margin-right: 5%;
+  margin-left: 5%;
+  border: 1px solid #E1E8EF;
+}
+
 .TrainingSession-members {
 	padding-left: 40%;
 }
@@ -102,16 +117,6 @@ body {
   border-radius: 25px 25px 0px 0px;
 }
 
-
-.Notes-heading {
-	background-color: #cccccc !important;
-	padding-left: 47% !important;
-	font-weight: bold;
-}
-
-.Notes-body {
-	background-color: #cccccc;
-}
 
 .Trainee-name {
 	font-size: 125%;
