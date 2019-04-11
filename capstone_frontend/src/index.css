@@ -28,7 +28,7 @@ body {
 
 .Panel-FootLoad {
   padding: 2em;
-  background-color: #cccccc; /* FIX GRAY */
+  background-color: #F5F5F6;
   box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
 
@@ -209,17 +209,15 @@ body {
 
 /* BELOW FOR FOOT VIZ */
 /* color ranges */
-.GrayScale .q0-5{fill:#ffffff}
-.GrayScale .q1-5{fill:#c1c1c1}
-.GrayScale .q2-5{fill:#828282}
-.GrayScale .q3-5{fill:#5b5b5b}
-.GrayScale .q4-5{fill:#3d3d3d}
+.GrayScale .q0-8{fill:#FFFDE0}
+.GrayScale .q1-8{fill:#E7F6CD}
+.GrayScale .q2-8{fill:#CFECBA}
+.GrayScale .q3-8{fill:#9ACAA5}
+.GrayScale .q4-8{fill:#549D8F}
+.GrayScale .q5-8{fill:#2A7081}
+.GrayScale .q6-8{fill:#263E81}
+.GrayScale .q6-8{fill:#0A2180}
 
-.GrayScale .q0-5-stop{stop-color:#ffffff}
-.GrayScale .q1-5-stop{stop-color:#c1c1c1}
-.GrayScale .q2-5-stop{stop-color:#828282}
-.GrayScale .q3-5-stop{stop-color:#5b5b5b}
-.GrayScale .q4-5-stop{stop-color:#3d3d3d}
 
 
 #footlegend-day, #footlegend-avg {

@@ -36,10 +36,8 @@ class TraineeList extends Component {
     	// an individual training session
       <div className="TraineeList">
         <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist}/>
-        <div id="TraineeList-Panel">
         <Notes notes={this.state.data.notes}/>
         {panelItems}
-        </div>
       </div>
     );
   }

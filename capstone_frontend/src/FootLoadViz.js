@@ -14,7 +14,7 @@ class FootLoadViz extends Component {
 
 }
 
-var colors = { 'light': '#c1c1c1', 'med': '#828282', 'med2':'#5b5b5b', 'dark': '#3d3d3d' };
+var colors = ['#FFFDE0', '#E7F6CD', '#CFECBA', '#9ACAA5', '#549D8F', '#2A7081', '#263E81', '#0A2180'];
 
 
 function drawKey(elemid) {
@@ -23,48 +23,63 @@ function drawKey(elemid) {
 		  .node()
 		  .getBoundingClientRect();
 
+  var num_colors = colors.length;
+
 	var w = chart_bounds.width / 2, // was 300
-		h = chart_bounds.width / 30;  // was 50
+		  h = chart_bounds.width / 30,  // was 50
+      rect_w = w / num_colors;
 
     var key = d3.select("#footlegend-"+elemid)
       .append("svg")
       .attr("width", w*2)
       .attr("height", h*3);
+  
+  var legend = key.append("g");
 
-    var legend = key.append("defs")
-      .append("svg:linearGradient")
-      .attr("id", "gradient")
-      .attr("x1", "0%")
-      .attr("y1", "100%")
-      .attr("x2", "100%")
-      .attr("y2", "100%")
-      .attr("spreadMethod", "pad");
+  colors.map(function(val, index) {
+    legend.append("rect")
+          .attr("width", rect_w)
+          .attr("height", h)
+          .attr("x", rect_w*index + h)
+          .attr("fill", val)
+          .attr("stroke", "black")
+          .attr("stroke-width", "0.5px")
+  });
 
-    legend.append("stop")
-      .attr("offset", "0%")
-      .attr("stop-color", colors["light"])
-      .attr("stop-opacity", 1);
+    // var legend = key.append("defs")
+    //   .append("svg:linearGradient")
+    //   .attr("id", "gradient")
+    //   .attr("x1", "0%")
+    //   .attr("y1", "100%")
+    //   .attr("x2", "100%")
+    //   .attr("y2", "100%")
+    //   .attr("spreadMethod", "pad");
 
-    legend.append("stop")
-      .attr("offset", "33%")
-      .attr("stop-color", colors["med"])
-      .attr("stop-opacity", 1);
+    // legend.append("stop")
+    //   .attr("offset", "0%")
+    //   .attr("stop-color", colors["light"])
+    //   .attr("stop-opacity", 1);
 
-    legend.append("stop")
-      .attr("offset", "66%")
-      .attr("stop-color", colors["med2"])
-      .attr("stop-opacity", 1);
+    // legend.append("stop")
+    //   .attr("offset", "33%")
+    //   .attr("stop-color", colors["med"])
+    //   .attr("stop-opacity", 1);
 
-    legend.append("stop")
-      .attr("offset", "100%")
-      .attr("stop-color", colors["dark"])
-      .attr("stop-opacity", 1);
+    // legend.append("stop")
+    //   .attr("offset", "66%")
+    //   .attr("stop-color", colors["med2"])
+    //   .attr("stop-opacity", 1);
 
-    key.append("rect")
-      .attr("width", w)
-      .attr("height", h)
-      .style("fill", "url(#gradient)")
-      .attr("transform", "translate("+h+",0)"); // was 0, 10
+    // legend.append("stop")
+    //   .attr("offset", "100%")
+    //   .attr("stop-color", colors["dark"])
+    //   .attr("stop-opacity", 1);
+
+    // key.append("rect")
+    //   .attr("width", w)
+    //   .attr("height", h)
+    //   .style("fill", "url(#gradient)")
+    //   .attr("transform", "translate("+h+",0)"); // was 0, 10
 
     var y = d3.scaleLinear()
       .range([w, 0])
@@ -88,8 +103,6 @@ function drawKey(elemid) {
 }
 
 export function drawFoot(elemid, footdata) {
-		console.log("FOOT DRAW")
-
 		var chart_bounds = d3
 		  .select("#foot-"+elemid)
 		  .node()
@@ -97,8 +110,8 @@ export function drawFoot(elemid, footdata) {
 
 
     var color = d3.scaleQuantize()
-          .domain([0, 200]) //TODO: adjust or make dynamic
-          .range(d3.range(5).map(function(d) { return "q" + d + "-5"; })); // TODO: 11 buckets??
+          .domain([0, 200]) //TODO: adjust or make dynamic???
+          .range(d3.range(8).map(function(d) { return "q" + d + "-8"; }));
 
 		var dimension = chart_bounds.width / 1.5;
     var sm_r = dimension/26;
@@ -128,17 +141,13 @@ export function drawFoot(elemid, footdata) {
                   {'x': 0.84 * dimension, 'y': 0.84 * dimension, 'r': lg_r, 'coord': '10R'}    //10R
                   ];
 
-    var l567 = { 'x': 0.125 * dimension, 'y': 0.62 * dimension, 'rx': sm_r*2.5, 'ry': sm_r*1.2 };
-    var r567 = { 'x': 0.875 * dimension, 'y': 0.62 * dimension, 'rx': sm_r*2.5, 'ry': sm_r*1.2 };
-    var l12  = { 'x': 0.275 * dimension, 'y': 0.37 * dimension, 'rx': sm_r*2, 'ry': sm_r*1.2 };
-    var l234 = { 'x': 0.17 * dimension, 'y': 0.46 * dimension, 'rx': sm_r*4.5, 'ry': sm_r*1.5 }
 		var num_circles = coords.length;
 		var circles = [];
 
 		var svg = d3.select("#foot-"+elemid).append('svg')
 			.attr('width', dimension)
-			.attr('height', dimension)
-			.style('background-color', 'white')
+			.attr('height', dimension + dimension/8)
+			.style('background-color', '#F5F5F6')
 			.attr('id', 'foot-'+elemid+'-viz')
       .attr("class", "GrayScale");
 
@@ -157,101 +166,7 @@ export function drawFoot(elemid, footdata) {
 			}
 		}
 
-    function draw_ellipses(l567, r567, l12, l234) {
-        // LEFT 5L/6L/7L
-        var l567_grad = svg.append('svg:linearGradient')
-                           .attr('id', 'l567-gradient-'+elemid); 
-        
-        l567_grad.append('stop')
-                .attr('class', color(footdata.points['5L'])+'-stop')
-                .attr('offset', '0');
-
-        l567_grad.append('stop')
-                .attr('class', color(footdata.points['6L'])+'-stop')
-                .attr('offset', '0.5');
-
-        l567_grad.append('stop')
-                .attr('class', color(footdata.points['7L'])+'-stop')
-                .attr('offset', '1');
-
-        svg.append('ellipse')
-          .attr('cx', l567['x'])
-          .attr('cy', l567['y'])
-          .attr('rx', l567['rx'])
-          .attr('ry', l567['ry'])
-          .style("fill", "url(#l567-gradient-"+ elemid +")");
-
-
-        // RIGHT 5L/6L/7L
-        var r567_grad = svg.append('svg:linearGradient')
-                           .attr('id', 'r567-gradient-'+elemid); 
-        
-        r567_grad.append('stop')
-                .attr('class', color(footdata.points['5R'])+'-stop')
-                .attr('offset', '0');
-
-        r567_grad.append('stop')
-                .attr('class', color(footdata.points['6R'])+'-stop')
-                .attr('offset', '0.5');
-
-        r567_grad.append('stop')
-                .attr('class', color(footdata.points['7R'])+'-stop')
-                .attr('offset', '1');
-
-       svg.append('ellipse')
-          .attr('cx', r567['x'])
-          .attr('cy', r567['y'])
-          .attr('rx', r567['rx'])
-          .attr('ry', r567['ry'])
-          .style("fill", "url(#r567-gradient-"+ elemid +")");
-
-
-        // // LEFT 1L/2L
-        // var l12_grad = svg.append('svg:linearGradient')
-        //                    .attr('id', 'l12-gradient-'+elemid); 
-        
-        // l12_grad.append('stop')
-        //         .attr('class', color(footdata.points['1L'])+'-stop')
-        //         .attr('offset', '0');
-
-        // l12_grad.append('stop')
-        //         .attr('class', color(footdata.points['2L'])+'-stop')
-        //         .attr('offset', '1');
-
-        // svg.append('ellipse')
-        //   .attr('cx', l12['x'])
-        //   .attr('cy', l12['y'])
-        //   .attr('rx', l12['rx'])
-        //   .attr('ry', l12['ry'])
-        //   .style("fill", "url(#l12-gradient-"+ elemid +")")
-        //   .attr("transform", "rotate(75,"+l12['x']+","+l12['y']+")"); //ROTATE
-
-        // LEFT 5L/6L/7L
-        var l234_grad = svg.append('svg:linearGradient')
-                           .attr('id', 'l234-gradient-'+elemid); 
-        
-        l234_grad.append('stop')
-                .attr('class', color(footdata.points['2L'])+'-stop')
-                .attr('offset', '0');
-
-        l234_grad.append('stop')
-                .attr('class', color(footdata.points['3L'])+'-stop')
-                .attr('offset', '0.5');
-
-        l234_grad.append('stop')
-                .attr('class', color(footdata.points['4L'])+'-stop')
-                .attr('offset', '1');
-
-        svg.append('ellipse')
-          .attr('cx', l234['x'])
-          .attr('cy', l234['y'])
-          .attr('rx', l234['rx'])
-          .attr('ry', l234['ry'])
-          .style("fill", "url(#l234-gradient-"+ elemid +")")
-          .attr("transform", "rotate(-20,"+l234['x']+","+l234['y']+")"); //ROTATE
-
-
-    }
+    
 
 		// add footprints
 		var feet = svg.append('image')
