@@ -15,35 +15,30 @@ class WBKeyViz extends Component {
 
 		function draw_key() {
 
-			var w = chart_bounds.width / 2, // was 300
-				h = chart_bounds.width / 30;  // was 50
+			var colors = ['#703C2D', '#B84A29', '#E66731', '#F3B355', '#F6CA67', '#FDED82', '#F5F860', '#C8F355', '#7FE631', '#48B829', '#2D7037'];
+
+			var num_colors = colors.length;
+
+			var w = chart_bounds.width / 1.5, // was 300
+				h = chart_bounds.width / 20,  // was 50
+				rect_w = w / num_colors;
 
 		    var key = d3.select("#"+elemid)
 		      .append("svg")
 		      .attr("width", w*2)
 		      .attr("height", h*2.5);
 
-		    var legend = key.append("defs")
-		      .append("svg:linearGradient")
-		      .attr("id", "gradient-wb");
+		    var legend = key.append("g");
 
-		      legend.append('stop')
-                .attr('class', 'stop-left')
-                .attr('offset', '0');
-
-              legend.append('stop')
-                .attr('class', 'stop-middle')
-                .attr('offset', '0.5');
-
-			  legend.append('stop')
-				.attr('class', 'stop-right')
-				.attr('offset', '1');
-
-		    key.append("rect")
-		      .attr("width", w)
-		      .attr("height", h)
-		      .style("fill", "url(#gradient-wb)")
-		      .attr("transform", "translate("+h+",0)"); // was 0, 10
+		    colors.map(function(val, index) {
+			    legend.append("rect")
+			          .attr("width", rect_w)
+			          .attr("height", h)
+			          .attr("x", rect_w*index + h)
+			          .attr("fill", val)
+			          .attr("stroke", "black")
+			          .attr("stroke-width", "0.5px")
+			  });
 
 		    var y = d3.scaleLinear()
 		      .range([w, 0])

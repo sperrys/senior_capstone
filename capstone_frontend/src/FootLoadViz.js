@@ -25,9 +25,9 @@ function drawKey(elemid) {
 
   var num_colors = colors.length;
 
-	var w = chart_bounds.width / 2, // was 300
-		  h = chart_bounds.width / 30,  // was 50
-      rect_w = w / num_colors;
+var w = chart_bounds.width / 1.5, // was 300
+        h = chart_bounds.width / 20,
+        rect_w = w / num_colors;
 
     var key = d3.select("#footlegend-"+elemid)
       .append("svg")
@@ -45,41 +45,6 @@ function drawKey(elemid) {
           .attr("stroke", "black")
           .attr("stroke-width", "0.5px")
   });
-
-    // var legend = key.append("defs")
-    //   .append("svg:linearGradient")
-    //   .attr("id", "gradient")
-    //   .attr("x1", "0%")
-    //   .attr("y1", "100%")
-    //   .attr("x2", "100%")
-    //   .attr("y2", "100%")
-    //   .attr("spreadMethod", "pad");
-
-    // legend.append("stop")
-    //   .attr("offset", "0%")
-    //   .attr("stop-color", colors["light"])
-    //   .attr("stop-opacity", 1);
-
-    // legend.append("stop")
-    //   .attr("offset", "33%")
-    //   .attr("stop-color", colors["med"])
-    //   .attr("stop-opacity", 1);
-
-    // legend.append("stop")
-    //   .attr("offset", "66%")
-    //   .attr("stop-color", colors["med2"])
-    //   .attr("stop-opacity", 1);
-
-    // legend.append("stop")
-    //   .attr("offset", "100%")
-    //   .attr("stop-color", colors["dark"])
-    //   .attr("stop-opacity", 1);
-
-    // key.append("rect")
-    //   .attr("width", w)
-    //   .attr("height", h)
-    //   .style("fill", "url(#gradient)")
-    //   .attr("transform", "translate("+h+",0)"); // was 0, 10
 
     var y = d3.scaleLinear()
       .range([w, 0])

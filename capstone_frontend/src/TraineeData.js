@@ -54,6 +54,7 @@ class Calendar extends Component {
 					</div>
 					<div id='cal'><CalendarViz elemid={'cal'} data={this.props.data}/></div>
 				</div>
+				<div id='cal-wellbeing'><WBKeyViz elemid={'cal-wellbeing'}/></div>
 			</div>
 		);
 	}

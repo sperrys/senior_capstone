@@ -184,6 +184,10 @@ body {
     stroke-width: 4px;
   }
 
+  #cal-wellbeing {
+    margin-left: 18%;
+  }
+
 
   /* color ranges */
 
@@ -216,12 +220,12 @@ body {
 .GrayScale .q4-8{fill:#549D8F}
 .GrayScale .q5-8{fill:#2A7081}
 .GrayScale .q6-8{fill:#263E81}
-.GrayScale .q6-8{fill:#0A2180}
+.GrayScale .q7-8{fill:#0A2180}
 
 
 
 #footlegend-day, #footlegend-avg {
-	padding-left: 19%;
+	padding-left: 12%;
 }
 
 #foot-day, #foot-avg {
@@ -258,19 +262,6 @@ body {
   padding-left: 15%;
 }
 
-
-/* WB KEY */
-.stop-left {
-  stop-color: #703C2D; /* q0-11 */
-}
-
-.stop-middle {
-  stop-color: #FDED82; /* q6-11 */
-}
-
-.stop-right {
-    stop-color: #2D7037; /* q11-11 */
-}
 
 /* SIDEBAR */
 
