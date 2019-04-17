@@ -15,15 +15,13 @@ class TraineeDataHeader extends Component {
   render() {
 
     return (
-      // header for the top of TraineeData
-      // TODO: fix nested a tags, also better pass info for state
       <Navbar>
         <Nav pullLeft>
           <NavItem eventKey={1}>
           <Link to='/'><Image className="Header-arrow" src={arrow}/></Link>
           </NavItem>
           <NavItem eventKey={1}>
-          Back
+          Back to All Soldiers
           </NavItem>
         </Nav>
         <Nav className="Header-trainee">

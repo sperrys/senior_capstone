@@ -203,6 +203,13 @@ body {
   .RdYlGn .q9-11{fill:#48B829}
   .RdYlGn .q10-11{fill:#2D7037}
 
+.wbkeytext-0, .wbkeytext-10 {
+  fill: white;
+}
+
+.wbkeytext-0, .wbkeytext-10, .wbkeytext-5 {
+  font-size: 0.8em;
+}
 
   /* hover info */
   #tooltip {
@@ -256,6 +263,14 @@ body {
   background-color: #fff;
   border: 2px solid #ccc;
   padding: 10px;
+}
+
+.bar-len {
+  fill: #484E86;
+}
+
+.bar-time {
+  fill: #112D5C;
 }
 
 #gait-length-avg-viz, #gait-length-day-viz, #gait-time-avg-viz, #gait-time-day-viz {

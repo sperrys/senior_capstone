@@ -53,6 +53,7 @@ var w = chart_bounds.width / 1.5, // was 300
 
     var yAxis = d3.axisBottom()
       .scale(y)
+      .tickFormat(d => d + " lbs")
       .ticks(3);
 
     key.append("g")
