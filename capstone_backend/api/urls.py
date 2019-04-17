@@ -16,6 +16,6 @@ router.register(r'sessions', TrainingSessionsViewSet)
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(router.urls)),
-    path("ingest", DataIngress.as_view(), name="ingress")
+    path("ingest/", DataIngress.as_view(), name="ingress")
 
 ]

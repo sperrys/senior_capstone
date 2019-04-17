@@ -26,18 +26,32 @@ class TraineeList extends Component {
     };
   }
 
+  componentWillMount() {
+    fetch('http://localhost:8000/api/trainees/').then(results => {
+        return results.json();
+      }).then(data => {
+        console.log(data);
+        let trainees = data.map((t) => {
+          return (
+            <Trainee key={t.id} id={t.id} name={t.first_name + " " + t.last_name} avgLoad={0}/>
+          )
+        })
+        this.setState({ panelItems: trainees });
+      });
+  }
+
   render() {
 
-    const panelItems = this.state.data.trainees.map(function(elem) {
-          return <Trainee id={elem.id} avgLoad={elem.avgLoad}/>
-        });
+    //const panelItems = this.state.data.trainees.map(function(elem) {
+    //      return <Trainee id={elem.id} avgLoad={elem.avgLoad}/>
+    //    });
 
     return (
     	// an individual training session
       <div className="TraineeList">
         <TraineeListHeader date={this.state.data.date} dist={this.state.data.dist}/>
         <Notes notes={this.state.data.notes}/>
-        {panelItems}
+        {this.state.panelItems}
       </div>
     );
   }
@@ -53,7 +67,7 @@ class Notes extends Component {
 
     return (
           <Row id="TraineeList-Notes">
-            <Col xs={5} md={5}><span className="Trainee-name">Identifier</span></Col>
+            <Col xs={5} md={5}><span className="Trainee-name">Name</span></Col>
             <Col xs={2} md={2}>
               <div id={wbkey_id}><WBKeyViz elemid={wbkey_id}/></div>
             </Col>
@@ -64,4 +78,3 @@ class Notes extends Component {
       )
   }
 }
-
