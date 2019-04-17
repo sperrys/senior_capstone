@@ -1,0 +1,220 @@
+[
+{
+  "model": "api.device",
+  "pk": 1,
+  "fields": {
+    "trainee": 1
+  }
+},
+{
+  "model": "api.device",
+  "pk": 2,
+  "fields": {
+    "trainee": 2
+  }
+},
+{
+  "model": "api.device",
+  "pk": 3,
+  "fields": {
+    "trainee": 3
+  }
+},
+{
+  "model": "api.device",
+  "pk": 4,
+  "fields": {
+    "trainee": 4
+  }
+},
+{
+  "model": "api.device",
+  "pk": 5,
+  "fields": {
+    "trainee": 5
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "19e7eba9-a94a-4040-b8de-be6b89fb9a9b",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "1e8f2ca4-400d-44d1-b73f-fc97c44f17c4",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "1fae4a04-7b57-4d65-815f-deaa2bcf0477",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "400bc9cf-2ba8-48f1-9c27-d08a6e861831",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "5894f027-d662-4624-ba6e-67209103ffad",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "696c8ff7-92a4-4664-a73e-e48876d350a6",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "74744249-ea13-4c0c-9bfc-09d425f9b9e7",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "8d93bc0b-8239-44d7-9de9-1b82941c799e",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "b04f38cb-e6c1-40a9-9f9d-206a45be5b9d",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "c0ccf047-bd88-4815-a0d2-c5c3a442733e",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.sensor",
+  "pk": "cd4da23e-6ae9-4f9f-864b-7aadb6fdb700",
+  "fields": {
+    "device": 1,
+    "type": "Pressure"
+  }
+},
+{
+  "model": "api.trainee",
+  "pk": 1,
+  "fields": {
+    "first_name": "Jordan",
+    "last_name": "Nagy"
+  }
+},
+{
+  "model": "api.trainee",
+  "pk": 2,
+  "fields": {
+    "first_name": "Spencer",
+    "last_name": "Perry"
+  }
+},
+{
+  "model": "api.trainee",
+  "pk": 3,
+  "fields": {
+    "first_name": "Lena",
+    "last_name": "Chang"
+  }
+},
+{
+  "model": "api.trainee",
+  "pk": 4,
+  "fields": {
+    "first_name": "Haiting",
+    "last_name": "Chan"
+  }
+},
+{
+  "model": "api.trainee",
+  "pk": 5,
+  "fields": {
+    "first_name": "Ashton",
+    "last_name": "Stevens"
+  }
+},
+{
+  "model": "api.recording",
+  "pk": 1,
+  "fields": {
+    "time_posted": "2019-03-25T22:38:20Z",
+    "sensor": "1e8f2ca4-400d-44d1-b73f-fc97c44f17c4",
+    "value": 20
+  }
+},
+{
+  "model": "api.recording",
+  "pk": 2,
+  "fields": {
+    "time_posted": "2019-03-25T22:38:25Z",
+    "sensor": "5894f027-d662-4624-ba6e-67209103ffad",
+    "value": 21
+  }
+},
+{
+  "model": "api.recording",
+  "pk": 3,
+  "fields": {
+    "time_posted": "2019-03-25T22:38:33Z",
+    "sensor": "5894f027-d662-4624-ba6e-67209103ffad",
+    "value": 24
+  }
+},
+{
+  "model": "api.recording",
+  "pk": 4,
+  "fields": {
+    "time_posted": "2019-03-25T22:38:40Z",
+    "sensor": "5894f027-d662-4624-ba6e-67209103ffad",
+    "value": 20
+  }
+},
+{
+  "model": "api.trainingsession",
+  "pk": 1,
+  "fields": {
+    "time_start": "2019-03-25T19:16:02Z",
+    "time_end": "2019-03-26T19:16:06Z",
+    "name": "Ruck March to Bedford!",
+    "distance": 26,
+    "description": "Generally flat terrain, up and back.",
+    "notes": "",
+    "trainees": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+}
+]
