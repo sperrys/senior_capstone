@@ -19,13 +19,13 @@ class CalendarViz extends Component {
 		  .node()
 		  .getBoundingClientRect();
 
-		var cellSize = chart_bounds.width / 13, // cell size
+		var cellSize = chart_bounds.width / 10, // cell size
 		  height = cellSize * 10,
-		  width = cellSize * 13;
+		  width = cellSize * 10;
 
 	    var no_months_in_a_row = Math.floor(width / (cellSize * 7 + 50));
-	    var shift_up = cellSize * 4;
-	    var shift_right = cellSize * 3;
+	    var shift_up = cellSize * 5;
+	    var shift_right = cellSize;
 
 	    var day = d3.timeFormat("%w"), // day of the week
 	        day_of_month = d3.timeFormat("%e"), // day of the month
@@ -54,25 +54,45 @@ class CalendarViz extends Component {
 
 	    function draw_setup(month_to_show) {
 
-	      // ! timeDays to control date range
-	      rect = svg.selectAll(".day")
-	          .data(function(d) { 
-	            return d3.timeDays(new Date(d, month_to_show-1, 1), new Date(d, month_to_show, 1));
-	          })
-	        .enter().append("rect")
-	          .attr("class", "day")
-	          .attr("width", cellSize)
-	          .attr("height", cellSize)
-	          .attr("x", function(d) {
-	            var month_padding = 1.2 * cellSize*7 * ((month(d)-1) % (no_months_in_a_row));
-	            return day(d) * cellSize + month_padding + shift_right; 
-	          })
-	          .attr("y", function(d) { 
-	            var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
-	            var row_level = Math.ceil(month(d) / (no_months_in_a_row));
-	            return (week_diff*cellSize) + row_level*cellSize*8 - cellSize/2 - shift_up;
-	          })
-	          .datum(format);
+		// ! timeDays to control date range
+		rect = svg.selectAll(".day")
+		  .data(function(d) { 
+		    return d3.timeDays(new Date(d, month_to_show-1, 1), new Date(d, month_to_show, 1));
+		  })
+		.enter()
+		  .append("g")
+		  .attr("class", "day-g")
+		  .attr("daynum", d => day(d))
+		  .append("rect")
+		  .attr("class", "day")
+		  .attr("width", cellSize)
+		  .attr("height", cellSize)
+		  .attr("x", function(d) {
+		    var month_padding = 1.2 * cellSize*7 * ((month(d)-1) % (no_months_in_a_row));
+		    return day(d) * cellSize + month_padding + shift_right; 
+		  })
+		  .attr("y", function(d) { 
+		    var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
+		    var row_level = Math.ceil(month(d) / (no_months_in_a_row));
+		    return (week_diff*cellSize) + row_level*cellSize*8 - cellSize/2 - shift_up;
+		  })
+		  .datum(format);
+
+	    var dayg = svg.selectAll(".day-g")
+	    	.append("text")
+  			.attr("class", "date-label")
+  			.attr("x", function(d) {
+		    	var month_padding = 1.2 * cellSize*7 * ((month(d)-1) % (no_months_in_a_row));
+		    	return day(d) * cellSize + month_padding + shift_right + cellSize/2; 
+		  	})
+  			.attr("y", function(d) { 
+		    	var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
+		    	var row_level = Math.ceil(month(d) / (no_months_in_a_row));
+		    	return (week_diff*cellSize) + row_level*cellSize*8 - cellSize/2 - shift_up + cellSize/1.7;
+		  	})
+		  	.style("text-anchor", "middle")
+  			.text(d => day_of_month(d));
+
 
 	      // ! timeMonths to control date range
 	      month_titles = svg.selectAll(".month-title")  // Jan, Feb, Mar and the whatnot
@@ -102,8 +122,6 @@ class CalendarViz extends Component {
 
 	    }
 
-	    // TODO: Fix color buckets
-
 		// ! Need data for calendar to be accessable by data['date-string']
 		// ! date field is for foot viz
 		var data = {};
@@ -128,8 +146,6 @@ class CalendarViz extends Component {
 		var day = d3.select("#day"+d); // get date
 
 			if (day._groups[0][0] == null) return; // no data
-
-			console.log(data[d]);
 			
 			// stroke was doing wierd stuff with overlapping borders,
 			// so using opacity rn
@@ -155,8 +171,8 @@ class CalendarViz extends Component {
 
 			// redraw foot and bar chart
 			drawFoot("day", data[d]); 
-			drawBar("gait-length-day");
-			drawBar("gait-time-day");
+			drawBar("gait-length-day", "len");
+			drawBar("gait-time-day", "time");
 
 		}
 
