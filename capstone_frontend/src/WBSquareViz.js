@@ -7,10 +7,10 @@ class WBSquareViz extends Component {
   //       to also use with key
 
   componentDidMount() {
-    this.drawChart(this.props.elemid);
+    this.drawChart(this.props.elemid, 1);
   }
 
-	drawChart(elemid) {
+	drawChart(elemid, wbnum) {
 		var chart_bounds = d3
 		  .select('#'+elemid)
 		  .node()
@@ -22,11 +22,19 @@ class WBSquareViz extends Component {
 
 		var svg = d3.select("#"+elemid).append("svg")
 		    .attr("width", w)
-		    .attr("height", h);
+		    .attr("height", h)
+		    .attr("class", "RdYlGn");
 
 		svg.append("rect")
-		      .attr("width", w)
-		      .attr("height", h);
+		    .attr("width", w)
+		    .attr("height", h)
+		    .attr("class", "q"+wbnum+"-11");
+		
+		svg.append("text")
+		   .attr("x", w/2)
+		   .attr("y", h/2)
+		   .attr("class", "q"+wbnum+"-11-text")
+		   .text(wbnum);
 		
 	}
 	        

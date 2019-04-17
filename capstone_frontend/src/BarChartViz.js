@@ -4,7 +4,7 @@ import * as d3 from "d3"; // I know stars are bad
 class BarChartViz extends Component {
 
   componentDidMount() {
-    drawBar(this.props.elemid, this.props.barid);
+    drawBar(this.props.data, this.props.elemid, this.props.barid);
   }
 	        
 	render() {
@@ -13,7 +13,9 @@ class BarChartViz extends Component {
 
 }
 
-export function drawBar(elemid, barid) {
+export function drawBar(data, elemid, barid) {
+	console.log("DRAW BAR")
+	console.log(data);
 	var chart_bounds = d3
 	  .select('#'+elemid)
 	  .node()
@@ -50,7 +52,6 @@ export function drawBar(elemid, barid) {
 	var ylabel = (barid == "len") ? " Length (Inches)" : " Time (Seconds)",
 		tooltip_units = (barid == "len") ? " Inches" : " Seconds";
 
-	fetch("/testdata/bar-data.json").then((res) => res.json()).then((data) => {
 
 		var ymax = d3.max(data, function(d) { return d.stride; });
 
@@ -120,8 +121,6 @@ export function drawBar(elemid, barid) {
 		        .duration(500)      
 		        .style("opacity", 0); 
 		}
-
-	});
 
 
 }

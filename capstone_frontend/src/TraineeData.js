@@ -9,6 +9,7 @@ import TraineeDataSidebar from './TraineeDataSidebar.js';
 import CalendarViz from './CalendarViz.js';
 import FootLoadViz from './FootLoadViz.js';
 import WBKeyViz from './WBKeyViz.js';
+import WBSquareViz from './WBSquareViz.js' 
 import LineGraphViz from './LineGraphViz.js';
 import BarChartViz from './BarChartViz.js';
 
@@ -21,7 +22,7 @@ class Summary extends Component {
 			<div className="Panel-Summary">
 				<div className='TraineeData-headings'>Summary Details</div>
 				<div>
-					<div id="summ-wellbeing">Wellbeing Index <WBKeyViz elemid={"summ-wellbeing"}/></div>
+					<div id="summ-wellbeing">Wellbeing Index <WBSquareViz elemid={"summ-wellbeing"}/><WBKeyViz elemid={"summ-wellbeing"}/></div>
 					<div id="summ-wb-descr">
 						The Wellbeing Index is based off of data collected on changes in foot pressure,
 						gait cadence, stride length, and stride time.<br/><br/>Note: The wellbeing index is
@@ -80,8 +81,8 @@ class GaitAsym extends Component {
 			<div className="Panel-Gait">
 				<div id={"gait-heading-"+this.props.id} className='TraineeData-headings'>Gait Analysis</div>
 				<div>
-					<div id={"gait-length-"+this.props.id}><BarChartViz barid={"len"} elemid={"gait-length-"+this.props.id}/></div>
-					<div id={"gait-time-"+this.props.id}><BarChartViz barid={"time"} elemid={"gait-time-"+this.props.id}/></div>
+					<div id={"gait-length-"+this.props.id}><BarChartViz data={this.props.data["bar"]} barid={"len"} elemid={"gait-length-"+this.props.id}/></div>
+					<div id={"gait-time-"+this.props.id}><BarChartViz data={this.props.data["bar"]} barid={"time"} elemid={"gait-time-"+this.props.id}/></div>
 				</div>
 			</div>
 		);
@@ -150,13 +151,13 @@ class TraineeData extends Component {
 					<AvgTab/>
 					<Summary/>
 					<FootLoad id={avg} data={this.state.data[0]}/>
-					<GaitAsym id={avg}/>
+					<GaitAsym id={avg} data={this.state.data[0]}/>
 				</Col>
 				<Col id='Panel-day' xs={6} md={6}>
 					<DayTab/>
 					<Calendar data={this.state.data}/>
 					<FootLoad id={day} data={this.state.data[0]}/>
-					<GaitAsym id={day}/>
+					<GaitAsym id={day} data={this.state.data[0]}/>
 				</Col>
 				</div>
 			</div>

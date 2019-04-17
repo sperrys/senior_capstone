@@ -50,7 +50,7 @@ class CalendarViz extends Component {
 	        .attr("id", "cal-viz")
 	        .append("g")
 
-	    var rect, month_titles, year_titles, tooltip; // need for scope and both functions to work OK
+	    var rect, dayg, month_titles, year_titles, tooltip; // need for scope and both functions to work OK
 
 	    function draw_setup(month_to_show) {
 
@@ -78,7 +78,7 @@ class CalendarViz extends Component {
 		  })
 		  .datum(format);
 
-	    var dayg = svg.selectAll(".day-g")
+	    dayg = svg.selectAll(".day-g")
 	    	.append("text")
   			.attr("class", "date-label")
   			.attr("x", function(d) {
@@ -125,7 +125,7 @@ class CalendarViz extends Component {
 		// ! Need data for calendar to be accessable by data['date-string']
 		// ! date field is for foot viz
 		var data = {};
-		caldata.map(function (n) { data[n.date] = {avg: n.avg, points: n.points, date: n.date }});
+		caldata.map(function (n) { data[n.date] = {avg: n.avg, points: n.points, date: n.date, bar: n.bar }});
 
 		// get month range for data
 		var months = Object.keys(data).map(function(n) { return parseInt(n.split("-")[1]) });
@@ -138,6 +138,9 @@ class CalendarViz extends Component {
 		  .attr("id", function(d) { return "day"+d; })
 		  .select("title")
 		  .text(function(d) { return d + ": " + percent(data[d].avg); });
+
+		dayg.filter(function(d) { return d in data; })
+			.attr("class", function(d) { return color(data[d].avg)+"-text"});
 
 		// highlight with square when clicked
 		rect.on("click", click);
@@ -171,8 +174,8 @@ class CalendarViz extends Component {
 
 			// redraw foot and bar chart
 			drawFoot("day", data[d]); 
-			drawBar("gait-length-day", "len");
-			drawBar("gait-time-day", "time");
+			drawBar(data[d].bar,"gait-length-day", "len");
+			drawBar(data[d].bar, "gait-time-day", "time");
 
 		}
 

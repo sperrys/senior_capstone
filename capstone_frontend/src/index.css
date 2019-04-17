@@ -203,6 +203,17 @@ body {
   .RdYlGn .q9-11{fill:#48B829}
   .RdYlGn .q10-11{fill:#2D7037}
 
+  /* change fill of dark colors */
+  .RdYlGn .q0-11-text {
+    fill: white;
+  }
+  .RdYlGn .q1-11-text {
+    fill: white;
+  }
+  .RdYlGn .q10-11-text {
+    fill: white;
+  }
+
 .wbkeytext-0, .wbkeytext-10 {
   fill: white;
 }
