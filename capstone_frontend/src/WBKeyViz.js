@@ -40,13 +40,26 @@ class WBKeyViz extends Component {
 			          .attr("stroke-width", "0.5px")
 			  });
 
+		    var textvals = [0, 5, 10];
+		    textvals.map(function(val, index) {
+		    	legend.append("text")
+		    	 	   .attr("x", rect_w*val+(1.6*h))
+		    	 	   .attr("y", h*.80)
+		      		   .style("text-anchor", "middle")
+		      		   .attr("class", "wbkeytext-"+val)
+		      		   .text(""+val+"");
+
+		    });
+
 		    var y = d3.scaleLinear()
 		      .range([w, 0])
 		      .domain([10, 0]); // changes chart scale
 		      					// TODO: make dynamic or final static
+		    var pae = {0:"Poor", 5:"Average", 10:"Excellent"};
 
 		    var yAxis = d3.axisBottom()
 		      .scale(y)
+		      .tickFormat(d => pae[d])
 		      .ticks(3);
 
 		    key.append("g")

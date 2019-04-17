@@ -4,7 +4,7 @@ import * as d3 from "d3"; // I know stars are bad
 class BarChartViz extends Component {
 
   componentDidMount() {
-    drawBar(this.props.elemid);
+    drawBar(this.props.elemid, this.props.barid);
   }
 	        
 	render() {
@@ -13,8 +13,7 @@ class BarChartViz extends Component {
 
 }
 
-export function drawBar(elemid) {
-	console.log("DRAW BAR")
+export function drawBar(elemid, barid) {
 	var chart_bounds = d3
 	  .select('#'+elemid)
 	  .node()
@@ -48,6 +47,8 @@ export function drawBar(elemid) {
 	        .style("z-index", "10")
 	        .style("visibility", "hidden")
 	        .text("a simple tooltip");
+	var ylabel = (barid == "len") ? " Length (Inches)" : " Time (Seconds)",
+		tooltip_units = (barid == "len") ? " Inches" : " Seconds";
 
 	fetch("/testdata/bar-data.json").then((res) => res.json()).then((data) => {
 
@@ -72,7 +73,7 @@ export function drawBar(elemid) {
 			.style("text-anchor", "middle")
 			.attr("fill", "black")
 			.attr("class", "y-bar-label")
-			.text("Avg Stride Length (Inches)")
+			.text("Avg Stride" + ylabel)
 
 		var bar_width = x.bandwidth() / 1.5;
 		var bar_shift = (x.bandwidth() - bar_width) / 2;
@@ -84,7 +85,7 @@ export function drawBar(elemid) {
 		    .attr("y", function(d) { return y(d.stride); })
 		    .attr("width", bar_width)
 		    .attr("height", function(d) { return height - y(d.stride); })
-		    .attr("fill", "black")
+		    .attr("class", "bar-"+barid)
 
 		// svg.selectAll(".barText")
 		// 	.data(data)                                 
@@ -104,8 +105,7 @@ export function drawBar(elemid) {
 
 		function mouseover(d) {
 			tooltip.style("visibility", "visible");
-			//var percent_data = (data[d] !== undefined && data[d].avg !== undefined) ? data[d].avg : 0;
-			var text = d.stride + " Inches";
+			var text = d.stride + tooltip_units;
 
 			tooltip.transition()        
 			            .duration(200)      

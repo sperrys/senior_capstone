@@ -66,8 +66,8 @@ class FootLoad extends Component {
 			<div className="Panel-FootLoad">
 				<div id={"foot-heading-"+this.props.id}className='TraineeData-headings'>Foot Load</div>
 				<div>
-					<div id={"footlegend-"+this.props.id}></div>
 					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id} data={this.props.data}/></div>
+					<div id={"footlegend-"+this.props.id}></div>
 				</div>
 			</div>
 		);
@@ -80,8 +80,8 @@ class GaitAsym extends Component {
 			<div className="Panel-Gait">
 				<div id={"gait-heading-"+this.props.id} className='TraineeData-headings'>Gait Analysis</div>
 				<div>
-					<div id={"gait-length-"+this.props.id}><BarChartViz elemid={"gait-length-"+this.props.id}/></div>
-					<div id={"gait-time-"+this.props.id}><BarChartViz elemid={"gait-time-"+this.props.id}/></div>
+					<div id={"gait-length-"+this.props.id}><BarChartViz barid={"len"} elemid={"gait-length-"+this.props.id}/></div>
+					<div id={"gait-time-"+this.props.id}><BarChartViz barid={"time"} elemid={"gait-time-"+this.props.id}/></div>
 				</div>
 			</div>
 		);
