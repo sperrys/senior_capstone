@@ -54,7 +54,7 @@ class WBSquareViz extends Component {
 		   .style("font-size", "1.5em")
 		   .attr("class", "q"+wbnum+"-11-text")
       	   .style("text-anchor", "end")
-		   .attr("transform", "translate("+ (offset+key_w*wbnum + w/14) +","+ h/4+")")
+		   .attr("transform", "translate("+ (offset+key_w*wbnum + w/12) +","+ h/4+")")
 		   .text(wbnum);
 		
 	}
