@@ -6,10 +6,11 @@ from .models import *
 
 
 class TraineeSerializer(serializers.ModelSerializer):
+
+
     class Meta:
         model = Trainee
-        fields = '__all__'
-
+        fields = ['id', 'first_name', 'last_name', 'well_being', 'data', 'lines']
 
 
 
