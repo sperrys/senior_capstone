@@ -22,20 +22,19 @@ class Summary extends Component {
 			<div className="Panel-Summary">
 				<div className='TraineeData-headings'>Summary Details</div>
 				<div>
-					<div id="summ-wellbeing">Wellbeing Index 
+					<div id="summ-wellbeing"><span className="subhead">Wellbeing Index</span>
 					<WBSquareViz elemid={"summ-wellbeing"}/>
 					<WBKeyViz elemid={"summ-wellbeing"}/></div>
 					<div id="summ-wb-descr">
-						The Wellbeing Index is based off of data collected on changes in foot pressure,
+						The Wellbeing Index is based off changes in foot pressure,
 						gait cadence, stride length, and stride time.<br/><br/>Note: The wellbeing index is
 						not a diagnoses. 
 					</div>
-					<div id="summ-trends">Trends <LineGraphViz data={this.props.data} elemid={"summ-trends"}/> </div>
+					<div> <span className="subhead">Trends</span> </div>
+					<div id="summ-trends"><LineGraphViz data={this.props.data} elemid={"summ-trends"}/> </div>
 					<div id="summ-trends-descr">
-						These trends illustrate how their gait is varying in context with the load being
-						carried. The Gait Asymmetry percentage is based off of gait cadence, stride
-						length, and stride time. The Load Carried weight includes the soldier&apos;s weight
-						and gear carried.
+						The Gait Asymmetry percentage is based off gait cadence, stride length, and stride time.
+						The Load Carried weight includes the Soldier's weight and gear carried.
 					</div>
 				</div>
 			</div>
@@ -51,7 +50,7 @@ class Calendar extends Component {
 				<div id="cal-heading" className='TraineeData-headings'>Choose a Date</div>
 				<div>
 					<div id='cal-desciption'> 
-						Select a date to view the foot pressure and gait analysis during a 
+						Select a date to view the foot load and gait analysis during a 
 						specific training day. Each calendar day's color corresponds with the wellbeing 
 						index at that point in time.
 					</div>
@@ -68,6 +67,10 @@ class FootLoad extends Component {
 		return (
 			<div className="Panel-FootLoad">
 				<div id={"foot-heading-"+this.props.id} className='TraineeData-headings'>Foot Load</div>
+				<div className="foot-description">
+					Foot Load is the Soldier's total load measured from their shoe insoles, including both body weight and
+					any additional load being carried.
+				</div>
 				<div>
 					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id} data={this.props.data}/></div>
 					<div id={"footlegend-"+this.props.id}></div>

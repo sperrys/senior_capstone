@@ -20,7 +20,7 @@ class CalendarViz extends Component {
 		  .getBoundingClientRect();
 
 		var cellSize = chart_bounds.width / 10, // cell size
-		  height = cellSize * 10,
+		  height = cellSize * 8,
 		  width = cellSize * 10;
 
 	    var no_months_in_a_row = Math.floor(width / (cellSize * 7 + 50));
@@ -102,7 +102,7 @@ class CalendarViz extends Component {
 	            .text(monthTitle)
 	            .attr("x", function(d, i) {
 	              var month_padding = 1.2 * cellSize*7* ((month(d)-1) % (no_months_in_a_row));
-	              return month_padding + shift_right*1.7;
+	              return month_padding + shift_right*3.5;
 	            })
 	            .attr("y", function(d, i) {
 	              var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );

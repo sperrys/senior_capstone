@@ -44,7 +44,6 @@ class WBSquareViz extends Component {
 		    .attr("rx", 6)
     		.attr("ry", 6)
 		    .attr("class", "q"+wbnum+"-11")
-		    .attr("stroke", "black")
 		    .attr("stroke-width", "1px")
 		    .attr("transform", "translate("+ (offset+key_w*wbnum) +",0)")
 		
