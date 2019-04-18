@@ -11,7 +11,9 @@ class CalendarViz extends Component {
 
 
 	drawCal(caldata) {
-		
+		console.log("in draw cal");
+		console.log(caldata);
+
 		var chart_bounds = d3
 		  .select("#cal")
 		  .node()

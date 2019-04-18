@@ -280,6 +280,10 @@ body {
 	stroke-width: 2px;
 }
 
+#TraineeList-linekey {
+  margin-left: 35%;
+}
+
 /* BELOW FOR BAR CHART VIZ */
 /* hover info */
 #tooltip-bar {

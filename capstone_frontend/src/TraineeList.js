@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/lib/Row';
 
 import TraineeListHeader from './TraineeListHeader.js';
 import WBKeyViz from './WBKeyViz.js';
+import LineKeyViz from './LineKeyViz.js';
 
 
 class TraineeList extends Component {
@@ -64,16 +65,20 @@ export default TraineeList;
 class Notes extends Component {
   render () {
     var wbkey_id = "TraineeList-wbkey";
+    var linekey_id = "TraineeList-linekey";
 
     return (
           <Row id="TraineeList-Notes">
-            <Col xs={4} md={4}><span className="Trainee-name">Identifier</span></Col>
+            <Col xs={4} md={4}>
+              <div className="Trainee-name">Identifier</div>
+            </Col>
             <Col xs={4} md={4}>
               <div className="Trainee-name"> Well-Being Index</div>
               <div id={wbkey_id}><WBKeyViz elemid={wbkey_id}/></div>
             </Col>
             <Col xs={4} md={4}>
-              <div className="Trainee-name">Trends Over Time</div>
+              <div className="Trainee-name">Trends Over Time</div> 
+              <div id={linekey_id}><LineKeyViz elemid={linekey_id}/></div>
             </Col>
           </Row>
       )
