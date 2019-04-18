@@ -4,10 +4,10 @@ import * as d3 from "d3"; // I know stars are bad
 class LineGraphViz extends Component {
 
   componentDidMount() {
-    this.drawChart(this.props.elemid);
+    this.drawChart(this.props.elemid, this.props.data);
   }
 
-	drawChart(elemid) {
+	drawChart(elemid, data) {
 		var chart_bounds = d3
 		  .select("#"+elemid)
 		  .node()
@@ -32,7 +32,7 @@ class LineGraphViz extends Component {
 		// line has no visible axes!!
 
 		// parse the date / time
-		var parseTime = d3.timeParse("%Y");
+		var parseTime = d3.timeParse("%Y-%m-%d");
 
 		// set the ranges
 		var x = d3.scaleTime().range([0, width]);
@@ -41,46 +41,47 @@ class LineGraphViz extends Component {
 
 		// define the line
 		var valueline_solid = d3.line()
-		    .x(function(d) { return x(d.Date); })
-		    .y(function(d) { return y1(d.Imports); });
+		    .x(function(d) { return x(d.date); })
+		    .y(function(d) { return y1(d.asymmetry); });
 		// define the line
 		var valueline_dashed = d3.line()
-		    .x(function(d) { return x(d.Date); })
-		    .y(function(d) { return y2(d.Exports); });
+		    .x(function(d) { return x(d.date); })
+		    .y(function(d) { return y2(d.load); });
 		 
 
-		function draw(data, id) {
-		  
-			var data = data[id];
+		function draw(data) {
+			console.log(data)
 
 			// format the data
 			data.forEach(function(d) {
-			  d.Date = parseTime(d.Date);
-			  d.Imports = +d.Imports;
-			  d.Exports = +d.Exports;
+			  d.date = parseTime(d.date);
+			  d.asymmetry = +d.asymmetry;
+			  d.load = +d.load;
 			});
 
 			// sort years ascending
 			data.sort(function(a, b){
-			return a["Date"]-b["Date"];
+				return a["date"]-b["date"];
 			})
 
 			// Scale the range of the data
-			x.domain(d3.extent(data, function(d) { return d.Date; }));
+			x.domain(d3.extent(data, function(d) { return d.date; }));
 			y1.domain([0, d3.max(data, function(d) {
-			  return Math.max(d.Imports); })]);
+			  return Math.max(d.asymmetry); })]);
 			y2.domain([0, d3.max(data, function(d) {
-			  return Math.max(d.Exports); })]);
+			  return Math.max(d.load); })]);
 
 			// Add the valueline path.
 			svg.append("path")
 			  .data([data])
 			  .attr("class", "line")
+			  .attr("stroke", "#021449")
 			  .attr("d", valueline_solid);
 			// Add the valueline path.
 			svg.append("path")
 			  .data([data])
 			  .attr("class", "line")
+			  .attr("stroke", "#021449")
 			  .style("stroke-dasharray", ("3, 3")) // make dashed
 			  .attr("d", valueline_dashed);  
 
@@ -106,12 +107,7 @@ class LineGraphViz extends Component {
 
 		}
 
-
-		// Get the data
-		fetch("/testdata/line-data.json").then((res) => res.json()).then((data) => {
-			// trigger render
-			draw(data, "test");
-		});
+		draw(data);
 		
 	}
 	        

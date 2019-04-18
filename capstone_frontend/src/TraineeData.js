@@ -30,7 +30,7 @@ class Summary extends Component {
 						gait cadence, stride length, and stride time.<br/><br/>Note: The wellbeing index is
 						not a diagnoses. 
 					</div>
-					<div id="summ-trends">Trends <LineGraphViz elemid={"summ-trends"}/> </div>
+					<div id="summ-trends">Trends <LineGraphViz data={this.props.data} elemid={"summ-trends"}/> </div>
 					<div id="summ-trends-descr">
 						These trends illustrate how their gait is varying in context with the load being
 						carried. The Gait Asymmetry percentage is based off of gait cadence, stride
@@ -67,7 +67,7 @@ class FootLoad extends Component {
 	render() {
 		return (
 			<div className="Panel-FootLoad">
-				<div id={"foot-heading-"+this.props.id}className='TraineeData-headings'>Foot Load</div>
+				<div id={"foot-heading-"+this.props.id} className='TraineeData-headings'>Foot Load</div>
 				<div>
 					<div id={"foot-"+this.props.id}><FootLoadViz elemid={this.props.id} data={this.props.data}/></div>
 					<div id={"footlegend-"+this.props.id}></div>
@@ -151,15 +151,15 @@ class TraineeData extends Component {
 				<div id='TraineeDataPanel'>
 				<Col id='Panel-avg' xs={6} md={6}>
 					<AvgTab/>
-					<Summary/>
-					<FootLoad id={avg} data={this.state.data[0]}/>
-					<GaitAsym id={avg} data={this.state.data[0]}/>
+					<Summary data={this.state.data.lines}/>
+					<FootLoad id={avg} data={this.state.data.cal[0]}/>
+					<GaitAsym id={avg} data={this.state.data.cal[0]}/>
 				</Col>
 				<Col id='Panel-day' xs={6} md={6}>
 					<DayTab/>
-					<Calendar data={this.state.data}/>
-					<FootLoad id={day} data={this.state.data[0]}/>
-					<GaitAsym id={day} data={this.state.data[0]}/>
+					<Calendar data={this.state.data.cal}/>
+					<FootLoad id={day} data={this.state.data.cal[0]}/>
+					<GaitAsym id={day} data={this.state.data.cal[0]}/>
 				</Col>
 				</div>
 			</div>

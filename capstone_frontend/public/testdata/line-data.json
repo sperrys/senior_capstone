@@ -1,29 +1,34 @@
 {
-   "test": [
+   "lines": [
       {
-         "Date": 1999,
-         "Imports": "15",
-         "Exports": "20"
+         "Date": "2019-01-02",
+         "Asymmetry": "10",
+         "Load": "80"
       },
       {
-         "Date": 2008,
-         "Imports": "42",
-         "Exports": "60"
+         "Date": "2019-01-05",
+         "Asymmetry": "15",
+         "Load": "20"
       },
       {
-         "Date": 2007,
-         "Imports": "29",
-         "Exports": "55"
+         "Date": "2019-01-06",
+         "Asymmetry": "30",
+         "Load": "90"
       },
       {
-         "Date": 2009,
-         "Imports": "50",
-         "Exports": "30"
+         "Date": "2019-01-09",
+         "Asymmetry": "20",
+         "Load": "150"
       },
       {
-         "Date": 2006,
-         "Imports": "44",
-         "Exports": "69"
+         "Date": "2019-01-12",
+         "Asymmetry": "15",
+         "Load": "88"
+      },
+      {
+         "Date": "2019-01-13",
+         "Asymmetry": "25",
+         "Load": "170"
       }
    ]
 }
