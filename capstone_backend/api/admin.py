@@ -20,7 +20,7 @@ class TrainingSessionAdmin(admin.ModelAdmin):
     list_display = ('name', 'time_start', 'time_end', 'distance')
 
 class RecordingAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__str__', 'time_posted')
 
 
 admin.site.register(Recording, RecordingAdmin)

@@ -28,25 +28,8 @@ class TraineeViewSet(viewsets.ModelViewSet):
     This viewset automatically provides `list` and `detail` actions.
     """
     queryset = Trainee.objects.all()
+    serializer_class = TraineeSerializer
 
-    def get_serializer_class(self):
-        if self.action == 'list':
-            return TraineeSerializer
-        if self.action == 'retrieve':
-            return TraineeDetailSerializer
-        return TraineeSerializer
-
-
-    def retrieve(self, request, pk=None):
-        queryset = Trainee.objects.all()
-        trainee = get_object_or_404(queryset, pk=pk)
-
-        device = Device.objects.get(trainee=pk)
-
-        trainee = TraineeSerializer(trainee)
-        device = DeviceSerializer(device)
-
-        return Response({"device": device.data, "trainee": trainee.data})
 
 
 
