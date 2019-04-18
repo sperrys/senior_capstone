@@ -127,6 +127,13 @@ body {
 .Trainee-name {
 	font-size: 125%;
 	font-weight: bold;
+  color: #021449;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+#TraineeList-wbkey {
+  margin-left: 18%;
 }
 
 .Trainee-load {
@@ -221,6 +228,7 @@ body {
 .wbkeytext-0, .wbkeytext-10, .wbkeytext-5 {
   font-size: 1em;
 }
+
 
   /* hover info */
   #tooltip {

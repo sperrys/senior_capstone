@@ -67,12 +67,13 @@ class Notes extends Component {
 
     return (
           <Row id="TraineeList-Notes">
-            <Col xs={5} md={5}><span className="Trainee-name">Name</span></Col>
-            <Col xs={2} md={2}>
+            <Col xs={4} md={4}><span className="Trainee-name">Identifier</span></Col>
+            <Col xs={4} md={4}>
+              <div className="Trainee-name"> Well-Being Index</div>
               <div id={wbkey_id}><WBKeyViz elemid={wbkey_id}/></div>
             </Col>
             <Col xs={4} md={4}>
-              <div >Key</div>
+              <div className="Trainee-name">Trends Over Time</div>
             </Col>
           </Row>
       )
