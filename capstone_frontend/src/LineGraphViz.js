@@ -16,7 +16,7 @@ class LineGraphViz extends Component {
 		var dimension = chart_bounds.width;
 
 		// set the dimensions and margins of the graph
-		var margin = {top: 20, right: 20, bottom: 30, left: 50},
+		var margin = {top: 20, right: 30, bottom: 30, left: 50},
 		    width = dimension - margin.left - margin.right,
 		    height = dimension/3 - margin.top - margin.bottom ; // was just dimension
 
@@ -36,16 +36,17 @@ class LineGraphViz extends Component {
 
 		// set the ranges
 		var x = d3.scaleTime().range([0, width]);
-		var y = d3.scaleLinear().range([height, 0]);
+		var y1 = d3.scaleLinear().range([height, 0]);
+		var y2 = d3.scaleLinear().range([height, 0]);
 
 		// define the line
 		var valueline_solid = d3.line()
 		    .x(function(d) { return x(d.Date); })
-		    .y(function(d) { return y(d.Imports); });
+		    .y(function(d) { return y1(d.Imports); });
 		// define the line
 		var valueline_dashed = d3.line()
 		    .x(function(d) { return x(d.Date); })
-		    .y(function(d) { return y(d.Exports); });
+		    .y(function(d) { return y2(d.Exports); });
 		 
 
 		function draw(data, id) {
@@ -66,8 +67,10 @@ class LineGraphViz extends Component {
 
 			// Scale the range of the data
 			x.domain(d3.extent(data, function(d) { return d.Date; }));
-			y.domain([0, d3.max(data, function(d) {
-			  return Math.max(d.Imports, d.Exports); })]);
+			y1.domain([0, d3.max(data, function(d) {
+			  return Math.max(d.Imports); })]);
+			y2.domain([0, d3.max(data, function(d) {
+			  return Math.max(d.Exports); })]);
 
 			// Add the valueline path.
 			svg.append("path")
@@ -80,7 +83,29 @@ class LineGraphViz extends Component {
 			  .attr("class", "line")
 			  .style("stroke-dasharray", ("3, 3")) // make dashed
 			  .attr("d", valueline_dashed);  
+
+			
+			if (elemid == "summ-trends") {
+		  		svg.append("g")
+		    		.attr("class", "axis axis--x")
+		    		.attr("transform", "translate(0," + height + ")")
+		    		.call(d3.axisBottom(x).ticks(5));
+
+		    	svg.append("g")
+		  			.attr("class", "axis axis--y1")
+		  			.call(d3.axisLeft(y1).ticks(4));
+
+		  		svg.append("g")
+		  			.attr("class", "axis axis--y2")	
+		  			.attr("transform", "translate("+width+", 0)")
+		  			.call(d3.axisRight(y2).ticks(4));
+			}
+
+
+
+
 		}
+
 
 		// Get the data
 		fetch("/testdata/line-data.json").then((res) => res.json()).then((data) => {
