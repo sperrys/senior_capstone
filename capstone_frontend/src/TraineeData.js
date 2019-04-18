@@ -97,7 +97,7 @@ class AvgTab extends Component {
 	render () {
 		return (
 			<div className="TraineeData-tab-avg">
-				Date that this was collected
+				Aggregate Summary
 			</div>)
 	}
 }
@@ -107,7 +107,7 @@ class DayTab extends Component {
 	render () {
 		return (
 			<div className="TraineeData-tab-day">
-				Date that this was collected
+				Specific Training
 			</div>)
 	}
 }
@@ -152,14 +152,14 @@ class TraineeData extends Component {
 				<Col id='Panel-avg' xs={6} md={6}>
 					<AvgTab/>
 					<Summary data={this.state.data.lines}/>
-					<FootLoad id={avg} data={this.state.data.cal[0]}/>
-					<GaitAsym id={avg} data={this.state.data.cal[0]}/>
+					<FootLoad id={avg} data={this.state.data.data[0]}/>
+					<GaitAsym id={avg} data={this.state.data.data[0]}/>
 				</Col>
 				<Col id='Panel-day' xs={6} md={6}>
 					<DayTab/>
-					<Calendar data={this.state.data.cal}/>
-					<FootLoad id={day} data={this.state.data.cal[0]}/>
-					<GaitAsym id={day} data={this.state.data.cal[0]}/>
+					<Calendar data={this.state.data.data}/>
+					<FootLoad id={day} data={this.state.data.data[0]}/>
+					<GaitAsym id={day} data={this.state.data.data[0]}/>
 				</Col>
 				</div>
 			</div>
