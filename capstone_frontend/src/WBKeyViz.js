@@ -23,6 +23,8 @@ class WBKeyViz extends Component {
 				h = chart_bounds.width / 20,  // was 50
 				rect_w = w / num_colors;
 
+			console.log("num_colors "+ num_colors)
+
 		    var key = d3.select("#"+elemid)
 		      .append("svg")
 		      .attr("width", w*2)

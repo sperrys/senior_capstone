@@ -22,7 +22,9 @@ class Summary extends Component {
 			<div className="Panel-Summary">
 				<div className='TraineeData-headings'>Summary Details</div>
 				<div>
-					<div id="summ-wellbeing">Wellbeing Index <WBSquareViz elemid={"summ-wellbeing"}/><WBKeyViz elemid={"summ-wellbeing"}/></div>
+					<div id="summ-wellbeing">Wellbeing Index 
+					<WBSquareViz elemid={"summ-wellbeing"}/>
+					<WBKeyViz elemid={"summ-wellbeing"}/></div>
 					<div id="summ-wb-descr">
 						The Wellbeing Index is based off of data collected on changes in foot pressure,
 						gait cadence, stride length, and stride time.<br/><br/>Note: The wellbeing index is
