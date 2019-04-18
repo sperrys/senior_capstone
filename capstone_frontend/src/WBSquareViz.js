@@ -51,9 +51,10 @@ class WBSquareViz extends Component {
 		svg.append("text")
 		   .attr("x", w/2)
 		   .attr("y", h/2)
+		   .style("font-size", "1.5em")
 		   .attr("class", "q"+wbnum+"-11-text")
       	   .style("text-anchor", "end")
-		   .attr("transform", "translate("+ (offset+key_w*wbnum + h/4) +","+ h/4+")")
+		   .attr("transform", "translate("+ (offset+key_w*wbnum + w/14) +","+ h/4+")")
 		   .text(wbnum);
 		
 	}
