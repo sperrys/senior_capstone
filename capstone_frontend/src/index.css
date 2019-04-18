@@ -144,6 +144,10 @@ body {
   box-shadow: 0px 0px 2px 0px rgba(204,204,204,1);
 }
 
+#TraineeData-tab-date, #TraineeData-tab-range {
+  font-weight: normal;
+}
+
 
 .Trainee-name {
 	font-size: 125%;

@@ -176,6 +176,7 @@ class CalendarViz extends Component {
 			drawFoot("day", data[d]); 
 			drawBar(data[d].bar,"gait-length-day", "len");
 			drawBar(data[d].bar, "gait-time-day", "time");
+			document.getElementById("curr-day-tab").innerHTML = d.split("-")[2];
 
 		}
 
