@@ -44,6 +44,10 @@ body {
   border-radius: 0px 0px 25px 25px;
 }
 
+#summ-trends-key {
+  padding-top: 10%;
+}
+
 .Header-arrow {
 	max-height: 15px;
 }

@@ -20,7 +20,7 @@ class CalendarViz extends Component {
 		  .getBoundingClientRect();
 
 		var cellSize = chart_bounds.width / 10, // cell size
-		  height = cellSize * 8,
+		  height = cellSize * 9,
 		  width = cellSize * 10;
 
 	    var no_months_in_a_row = Math.floor(width / (cellSize * 7 + 50));

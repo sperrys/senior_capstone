@@ -75,14 +75,14 @@ class LineKeyViz
 		
 		svg.append("text")
 		   .attr("x", line_w*1.1)
-		   .attr("y", line_h/8)
+		   .attr("y", line_h/5)
 		   .attr("fill", "#021449")
 		   .style("font-size", "0.7em")
 		   .text("Load (lbs)");
 
 		svg.append("text")
 		   .attr("x", line_w*1.1)
-		   .attr("y", line_h/2)
+		   .attr("y", line_h/1.5)
 		   .attr("fill", "#021449")
 		   .style("font-size", "0.7em")
 		   .text("Gait Assymetry (%)");

@@ -11,6 +11,7 @@ import FootLoadViz from './FootLoadViz.js';
 import WBKeyViz from './WBKeyViz.js';
 import WBSquareViz from './WBSquareViz.js' 
 import LineGraphViz from './LineGraphViz.js';
+import LineKeyViz from './LineKeyViz.js';
 import BarChartViz from './BarChartViz.js';
 
 
@@ -31,9 +32,12 @@ class Summary extends Component {
 						not a diagnoses. 
 					</div>
 					<div> <span className="subhead">Trends</span> </div>
+					<Col xs={4} md={4}>
+						<div id="summ-trends-key"><LineKeyViz elemid={"summ-trends-key"}/></div>
+					</Col>
 					<div id="summ-trends"><LineGraphViz data={this.props.data} elemid={"summ-trends"}/> </div>
 					<div id="summ-trends-descr">
-						The Gait Asymmetry percentage is based off gait cadence, stride length, and stride time.
+						<br/>The Gait Asymmetry percentage is based off gait cadence, stride length, and stride time.
 						The Load Carried weight includes the Soldier's weight and gear carried.
 					</div>
 				</div>
